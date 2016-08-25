@@ -1,0 +1,48 @@
+<html>
+<head></head>
+<body> 
+	<script>
+	   // 函数表达式和函数声明的区别
+	   // 同一作用域下的函数声明会提升, 所以可以在函数声明的位置前面调用函数
+	   // 函数表达式则不能
+       
+       sayHello(); // 可以运行
+       console.log(sayHello.toString()) ;
+       // sayHi(); // 报错
+       function sayHello() {
+       	  console.log("hello");
+       }
+
+       var sayHi=function(){
+       	  console.log("hi");
+       }
+
+       var Greet=function(){
+                  greet(); console.log(greet.toString());
+       	    function greet(){
+       	    	console.log('greet Statement');
+       	    }
+       	    var greet=function(){
+       	    	console.log("greet Expression");
+       	    } 
+       } 
+       Greet();      
+
+       /*
+            条件式函数声明跟函数表达式的处理方式一样。因此，条件式函数声明丧失了函数声明提升的特性。           
+       */ 
+       // statement(); //Uncaught TypeError: statement is not a function
+       if(true){
+            function statement(){
+                  console.log("statement");
+            }
+       }else {
+             function statement(){
+                  console.log("statement2");
+             }
+       }
+       statement(); 
+ 
+	</script>
+</body>
+</html>
