@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+    /*
+       Javascript对象具有“自有属性”（可以通过hasOwnProperty方法判断,就是直接定义在自身的属性，而不是继承而来）， 也有一些属性是从原型对象继承而来的。
+
+		不过js的继承体系和C#的继承是有些区别的：
+
+		C#的继承则是直接拥有父类的公开成员(public/protected),查询和修改操作都是针对同一个成员
+		js的成员访问是通过原型链访问到父类的成员（属性和函数），但是赋值的时候只能直接赋给自有属性 ，不会去修改原型链
+    */
+	var base=function(){
+		this.name="father";
+	} 
+	var child=function(){}
+	child.prototype=new base();
+
+
+	var instance=new child();
+	console.log(instance.name);  // father
+
+	instance.name='child';   // instance: {"name":"child"}  
+
+	console.log(instance);  // 继承的name不变 还是father
+
+	</script>
+</body>
+</html>
