@@ -1,57 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>枚举</title>
+    <meta charset="UTF-8">
+    <title>枚举</title>
 </head>
+
 <body>
-	<script>
-		function enumeration(namesToValues)	{
-			var enumeration=function(){throw "Can't Instantiate Enumerations";}
+    <script>
+    function enumeration(namesToValues) {
+        var enumeration = function() {
+            throw "Can't Instantiate Enumerations";
+        }
 
-			var proto=enumeration.prototype={
-				consotructor: enumeration,
-				toString:function(){return this.name;}, // 取的枚举值的字符串名称
-				valueOf:function (){return this.value;}, // 取的枚举值的整型值
-				toJSON:function(){return this.name;}   // 枚举值的格式化字符串
-				};
+        var proto = enumeration.prototype = {
+            consotructor: enumeration,
+            toString: function() {
+            	// 取的枚举值的字符串名称
+                return this.name;
+            }, 
+            valueOf: function() {
+            	 // 取的枚举值的整型值
+                return this.value;
+            },
+            toJSON: function() {
+            	// 枚举值的格式化字符串
+                    return this.name;
+                } 
+        };
 
-				enumeration._values=[]; //存放枚举对象的数组
+        enumeration._values = []; //存放枚举对象的数组
 
-				for(name in namesToValues){
-					var e=inherit(proto); 
-					e.name=name;
-					e.value=namesToValues[name];
-					enumeration[name]=e;
-					enumeration._values.push(e);
-				}
+        for (name in namesToValues) {
+            var e = inherit(proto);
+            e.name = name;
+            e.value = namesToValues[name];
+            enumeration[name] = e;
+            enumeration._values.push(e);
+        }
 
-				enumeration.foreach=function(f,c){
-					 for(var i=0;i<this._values.length;i++) f.call(c,this._values[i]);
-				}
-			return enumeration;
-		}
-		
-		// 对象创建工具方法
-		function inherit(p){
-			if(p==null) throw TypeError();
-			if(Object.create)
-				return Object.create(p);
-			var t=typeof p;
-			if(t !== 'object' && t !=="function") throw TypeError();
-			function f(){};
-			f.prototype=p;
-			return new f(); 
-		}
+        enumeration.foreach = function(f, c) {
+            for (var i = 0; i < this._values.length; i++) f.call(c, this._values[i]);
+        }
+        return enumeration;
+    }
 
-		//test
-		var category=enumeration({"daytour":38,"wifi":40});
-		console.log(category.daytour);
-		console.log(category.daytour.toString()); 
-		console.log("--------------------------------------------");
-		category.foreach(function(s){
-			console.log(s);
-		});
-	</script>
+    // 对象创建工具方法
+    function inherit(p) {
+        if (p == null) throw TypeError();
+        if (Object.create)
+            return Object.create(p);
+        var t = typeof p;
+        if (t !== 'object' && t !== "function") throw TypeError();
+
+        function f() {};
+        f.prototype = p;
+        return new f();
+    }
+
+    //test
+    var category = enumeration({
+        "daytour": 38,
+        "wifi": 40
+    });
+    console.log(category.daytour);
+    console.log(category.daytour.toString());
+    console.log("--------------------------------------------");
+    category.foreach(function(s) {
+        console.log(s);
+    });
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cnosole调试技巧</title>
+</head>
+
+<body>
+    <script>
+    // 所有这些技巧都应该只是调试期使用,并且能在控制台中使用的尽量不要写在js代码里，不要出现在的生产环境的代码中
+
+    /*
+    	1. console.trace(); 输出调用堆栈信息
+    */
+    function FnTraced() {
+        console.trace(); //当方法被调用时，会在控制台打印出其被调用的起始位置和整个生命周期 
+        // do something;
+    }
+    FnTraced();
+
+    /*
+    	2. console.table(); 将对象以表格形式输出，省去每次都得点击才能看到对象的属性值
+    */
+    var cities = [{
+        city: '厦门'
+    }, {
+        city: '北京'
+    }, {
+        city: '上海'
+    }, {
+        city: '广州'
+    }, {
+        city: '深圳'
+    }, {
+        city: '珠海'
+    }, {
+        city: '香港'
+    }, {
+        city: '南京'
+    }, {
+        city: '沈阳'
+    }, {
+        city: '云南'
+    }, {
+        city: '澳门'
+    }];
+    console.table(cities);
+
+    /*
+    	3. 查看程序耗时
+    	   console.time([title]);    //开始计时 
+    	   // something to be timed
+    	   console.timeEnd([title]); //结束计时并输出耗时(毫秒)
+    */
+    console.time('test');
+    doSomething();
+    console.timeEnd('test'); //test: xxx ms
+
+    /*
+    	4. 查看cpu消耗 , 在开发者工具中profiles选项窗口下查看
+    	cosnole.profile();
+    	console.profileEnd();
+    	// 不指定参数，会自动分配；
+    */
+    console.profile("profile");
+    doSomething();
+    doAnotherThing();
+    console.profileEnd('profile');
+
+    /*
+    	5. 查看对象的属性列表
+    	console.dir();  
+    */
+    var body = document.getElementsByTagName('body')[0]
+    console.dir(body);
+
+
+    /*
+    	6. 快速定位函数体位置并调试， 在函数被调用的时候自动断点进去
+    	适用于源文件层次结构复杂，不容易直接shift+ctr+f查找源代码时使用
+    	debug(functionname);  // 需要在控制台中执行
+    */
+    //debug(doSomething); 
+    // 然后模拟调用
+    // doSomething(); //这个时候开发者工具就会自动在 doSomething的函数体的第一行中断
+
+    /*
+    	7. 监控函数的参数
+    	monitor(functionName); // 需要在控制台中执行
+    */
+    // monitor(doAnotherThing);
+    // doAnotherThing('mock argument');  //function doAnotherThing called with arguments: mock argument
+
+    /*
+    	8. 如果页面中存在iframe并且需要在不同iframe的上下文中使用console 只需在开发者工具console窗口的左上角切换
+    */
+    function doSomething() {
+        for (var i = 0; i < 10000; i++) {
+            var obj = new Object();
+        }
+    }
+
+    function doAnotherThing() {
+        for (var i = 0; i < 5000; i++) {
+            var obj = new Object();
+            obj.name = 'super man';
+        }
+    }
+    </script>
+    <iframe src="http://www.baidu.com" style="width:500px; height:300px;"></iframe>
+</body>
+
+</html>

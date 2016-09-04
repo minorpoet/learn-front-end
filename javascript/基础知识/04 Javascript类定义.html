@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
+
 <body>
-	<script type="text/javascript">
-		/*
-			Javascript 定义类的步骤：
-			1. 定义一个构造函数，并在其内初始化对象的实例属性
-			2. 给构造函数的prototype对象定义实例方法
-			3. 给构造函数定义类字段和类实例			
-		*/
+    <script type="text/javascript">
+    /*
+    			Javascript 定义类的步骤：
+    			1. 定义一个构造函数，并在其内初始化对象的实例属性
+    			2. 给构造函数的prototype对象定义实例方法
+    			3. 给构造函数定义类字段和类实例			
+    		*/
 
-		// step one
-		// 定义构造函数
-		function Complex(real, imaginary){
-			if(isNaN(real) || isNaN(imaginary)){
-				throw new TypeError();
-			}
-			this.r=real;
-			this.i=imaginary;
-		}
+    // step one
+    // 定义构造函数
+    function Complex(real, imaginary) {
+        if (isNaN(real) || isNaN(imaginary)) {
+            throw new TypeError();
+        }
+        this.r = real;
+        this.i = imaginary;
+    }
 
-		// step two
-		// 定义实例方法
-		Complex.prototype.add=function(that){
-			return new Complex(this.r+that.r,this.i+that.i);
-		}
+    // step two
+    // 定义实例方法
+    Complex.prototype.add = function(that) {
+        return new Complex(this.r + that.r, this.i + that.i);
+    }
 
-		// step three
-		// 定义静态成员
-		Complex.ZERO= new Complex(0,0);
-		Complex.ONE= new Complex(1,0);
+    // step three
+    // 定义静态成员
+    Complex.ZERO = new Complex(0, 0);
+    Complex.ONE = new Complex(1, 0);
 
 
-		/*
-			constructor属性
-		*/
-		function typeAndValueOf(x){
-			if(x==null) return ""; // null和undefind 没有构造函数
-			switch(x.constructor){
-				case Number: return "Number: "+x;
-				case String: return "String: '"+x+"'";
-				case Date: return "Date: "+x;
-				case RegExp: return "Regexp: "+x;
-				case Complex: return "Complex: "+x;
-			}
-		}		
+    /*
+    	constructor属性
+    */
+    function typeAndValueOf(x) {
+        if (x == null) return ""; // null和undefind 没有构造函数
+        switch (x.constructor) {
+            case Number:
+                return "Number: " + x;
+            case String:
+                return "String: '" + x + "'";
+            case Date:
+                return "Date: " + x;
+            case RegExp:
+                return "Regexp: " + x;
+            case Complex:
+                return "Complex: " + x;
+        }
+    }
 
-		/*
-		* 扩展对象属性
-		* @target: 目标对象
-		* @options: 扩展属性集
-		*/
-		function extend(target,options){
-			target= target|| {};			
-			for(var key in options){
-				target[key]=options[key];
-			}
-		}
-
-	</script>
+    /*
+     * 扩展对象属性
+     * @target: 目标对象
+     * @options: 扩展属性集
+     */
+    function extend(target, options) {
+        target = target || {};
+        for (var key in options) {
+            target[key] = options[key];
+        }
+        return target;
+    }
+    </script>
 </body>
+
 </html>

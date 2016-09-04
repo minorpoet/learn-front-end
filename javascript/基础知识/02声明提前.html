@@ -1,30 +1,32 @@
 <html>
- <head>
- </head>
 
- <body>
-   <script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 
-      /*
-			当前作用域内的声明都会提升到作用域的最前面，包括变量和函数的声明
-			注意： 只是提升声明 不提升赋值和函数表达式的函数体
-			优先级： 语言内置（this、 arguments） ->  形参 -> 函数声明 -> 变量声明 
-			根据优先级 后声明的会覆盖前面声明的同名变量 不管其类型是什么
-      */
-   		var hello="hello";
-   		(function(){
-   			console.log(hello);
-   			var hello="hello world";
-   		})(); // 输出 undefined
+<body>
+    <script>
+    /*
+            当前作用域内的声明都会提升到作用域的最前面，包括变量和函数的声明
+            注意： 只是提升声明 不提升赋值和函数表达式的函数体
+            优先级： 语言内置（this、 arguments） ->  形参 -> 函数声明 -> 变量声明 
+            根据优先级 后声明的会覆盖前面声明的同名变量 不管其类型是什么
+          */
+    var hello = "hello";
+    (function() {
+        console.log(hello);
+        var hello = "hello world";
+    })(); // 输出 undefined
 
 
-   		// 以上代码等价于
-   		// var hello="hello";
-   		// (function(){
-   		// 	var hello;  // 所以是undefined
-   		// 	console.log(hello);
-   		//     hello="hello world";
-   		// })();
-   </script>
- </body>
+    // 以上代码等价于
+    // var hello="hello";
+    // (function(){
+    //   var hello;  // 所以是undefined
+    //   console.log(hello);
+    //     hello="hello world";
+    // })();
+    </script>
+</body>
+
 </html>

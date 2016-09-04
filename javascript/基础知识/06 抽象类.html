@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>抽象类</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // 抽象方法： 不能调用
+    var abstractMethod = function() {
+        throw new Error('abstract method.')
+    };
+    // 抽象类： 不能实例化
+    var AbstractClass = function() {
+        throw new Error("Can't instantiate abstract classes.");
+    };
+    AbstractClass.prototype.doSomething = abstractMethod;
+
+    // 抽象子类： 也不能实例化  但是可以实现部分方法
+    var AbstractSub = function() {
+        throw Error("Can't instantiate abstract classes.")
+    };
+    AbstractSub.prototype = AbstractClass.prototype;
+    AbstractSub.prototype.constructor = AbstractSub;
+    AbstractSub.doSomething = function() {
+        console.log('do doSomething');
+    }
+    </script>
+</body>
+
+</html>
