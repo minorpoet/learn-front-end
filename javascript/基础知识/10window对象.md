@@ -3,7 +3,7 @@
 window.location属性引用Location对象，表示当前窗口文档的URL
 
 1. href 完整的url
-2. protocal 协议, 如 "http:"
+2. protocol 协议, 如 "http:"
 3. host/hostname 主机，host带端口  hostname不带端口
 4. port 端口
 5. pathname 路径， 根路径则是 "/" 
