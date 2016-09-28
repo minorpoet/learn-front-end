@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style type="text/css">
+    p {
+        border: 1px solid red;
+        margin: 10px 5px;
+        padding: 10px 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <form>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, ea, non. Ipsam dolores, facere beatae iste veniam labore sit assumenda animi harum id. Consequuntur nobis officia eos, id fugit tempora.</p>
+        <input type="submit" value="click" id="btnSayHi" class="button" />
+    </form>
+    <script type="text/javascript">
+    var btn = document.getElementById('btnSayHi');
+    var callback = function(event) {
+        alert('hello wolrd');
+        var p = document.createElement('p');
+        var text = document.createTextNode('new paragraph')
+        p.appendChild(text);
+        //    document.body.appendChild(p);
+        document.forms[0].insertBefore(p, btn);
+
+
+        event = event || window.event
+
+        // 阻止默认行为 
+        if (event.preventDefault) { // 标准
+            event.preventDefault();
+        }
+        // ie
+        event.returnValue = false;
+
+        // 阻止事件冒泡
+        if (event.stopPropagation) // 标准
+        {
+            event.stopPropagation();
+        }
+        // ie 
+        event.cancelBubble = true;
+    }
+    on(btn, 'click', callback);
+    on(btn, 'click', callback);
+
+
+    /**
+     * 注册事件
+     */
+    function on(target, type, handler) {
+        /**
+         * addEventListener([事件类型],[事件处理函数],[是否捕获阶段触发，默认false即冒泡阶段触发])
+         * 回调函数中的this指向事件目标
+         * 而attachEvent添加的回调函数中的this指向的是全局对象(window)
+         */
+        if (target.addEventListener) { // 相同的事件处理程序只会注册一次
+            target.addEventListener(type, handler, false);
+        }
+        // ie-9 之前
+        else {
+            // 相同的事件处理程序会多次注册 
+            target.attachEvent('on' + type, function(event) {
+                // 确保处理函数中的this指向事件目标
+                return handler.call(target, event);
+            });
+        }
+    }
+
+    /**
+     * 移除事件
+     */
+    function off(type, event, handler) {
+        if (target.removeEventListener) {
+            target.removeEventListener(type, handler);
+        }
+        // ie-9 之前
+        else {
+            target.detachEvent('on' + type, handler);
+        }
+    }
+    </script>
+</body>
+
+</html>

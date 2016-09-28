@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dom Ready</title>
+    <style>
+    p {
+        margin: 15px 10px;
+        padding: 15px 10px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    </style>
+    <script type="text/javascript">
+    /*
+     * 实现dom ready
+     */
+    var whenReady = (function() {
+        var funcs = [];
+        var ready = false;
+
+        function handler(e) {
+            if (ready) return;
+
+            // 如果发生readystatechange事件
+            // 但是状态不是‘complete'的话，那么文档尚未准备好
+            if (e.type === "readystatechange" && document.readyState !== "complete")
+                return;
+
+            // 运行所有注册函数
+            // 注意每次都要计算funcs.length
+            // 以防止这些函数的调用可能会导致注册更多的函数
+            for (var i = 0; i < funcs.length; i++) {
+                funcs[i].call(document)
+            }
+
+            // 标识ready 为true， 并一处所有函数
+            ready = true;
+            funcs = null;
+        }
+
+        // 为接受到的任何事件注册处理程序
+        if (document.addEventListener) {
+            document.addEventListener("DOMContentLoaded", handler, false);
+            document.addEventListener("readystatechange", handler, false);
+            window.addEventListener("load", handler, false);
+        } else if (document.attachEvent) {
+            document.attachEvent("onreadystatechange", handler);
+            window.attachEvent("onload", handler);
+        }
+
+        return function whenReady(f) {
+            if (ready) f.call(document); // 若准备完毕，立即执行
+            else funcs.push(f); // 否则，加入队列等候
+        }
+    }());
+    var start = new Date();
+    whenReady(function() {
+        var now = new Date();
+        var eclapsed = now.getTime() - start.getTime();
+        var note = document.createElement('p');
+        note.style.backgroundColor = 'yellow';
+        note.innerHTML = "DOM is ready at " + start.toString() + "!!!<br/>  <span style='color:red;font-weight:bold'> eclapsed: " + eclapsed + " ms</span>";
+        document.body.appendChild(note);
+    })
+    </script>
+    <!-- 同步js会影响domready时长-->
+    <script type="text/javascript" src="content/timeconsumer.js"></script>
+</head>
+
+<body>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos a ab sit maiores amet officiis totam at, quod accusantium excepturi iste, eveniet nam blanditiis voluptates autem alias ipsum architecto, hic! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos a ab sit maiores amet officiis totam at, quod accusantium excepturi iste, eveniet nam blanditiis voluptates autem alias ipsum architecto, hic! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos a ab sit maiores amet officiis totam at, quod accusantium excepturi iste, eveniet nam blanditiis voluptates autem alias ipsum architecto, hic!
+    </p>
+</body>
+
+</html>
