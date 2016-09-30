@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡和捕获</title>
+    <style>
+    #outer {
+        margin: 10px;
+        padding: 15px 10px;
+        background-color: #46b9c7;
+    }
+    
+    #inner {
+        background-color: yellow;
+        padding: 15px 10px;
+    }
+    </style>
+    <script>
+    window.onload = function() {
+        var outer = document.getElementById('outer'),
+            inner = document.getElementById('inner');
+
+        outer.addEventListener('click', function() {
+            console.log('bubble outer');
+        }, false);
+
+        outer.addEventListener('click', function() {
+            console.log('capture outer');
+        }, true);
+
+        inner.addEventListener('click', function() {
+            console.log('capture inner');
+        }, true);
+        inner.addEventListener('click', function() {
+            console.log('bubble inner');
+        }, false);
+
+        // 点击内部 p 元素  输出顺序： capture outer  ->  [capture inner  ->  bubble inner] -> bubble outer 
+        
+        /** 
+         *	先捕获 后冒泡；  
+         *	对于事件的触发目标，先注册的先执行，不区分注册的是冒泡还是捕获
+         * 	如果 inner 注册的capture inner在bubble inner之后 那么输出是 capture outer  ->  [bubble inner  ->  capture inner]  -> bubble outer 
+         *	个人理解为 冒泡和捕获 都是对于目标元素的祖先元素来说的；冒泡从目标元素将事件向外传播，捕获从祖先级元素一级级传向目标元素，然后执行目标元素上的事件; 所以当注册事件的元素作为祖先元素的时候 addEventListener的第三个参数才会影响执行顺序
+         *	ps: ie-8 之前的 attachEvent 只支持冒泡， 毕竟冒泡是ie提出的嘛
+         */
+    }
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+        <p id="inner">
+            Click
+        </p>
+    </div>
+</body>
+
+</html>
