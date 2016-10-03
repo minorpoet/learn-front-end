@@ -32,12 +32,13 @@
         inner.addEventListener('click', function() {
             console.log('capture inner');
         }, true);
+
         inner.addEventListener('click', function() {
             console.log('bubble inner');
         }, false);
 
         // 点击内部 p 元素  输出顺序： capture outer  ->  [capture inner  ->  bubble inner] -> bubble outer 
-        
+
         /** 
          *	先捕获 后冒泡；  
          *	对于事件的触发目标，先注册的先执行，不区分注册的是冒泡还是捕获
@@ -51,8 +52,9 @@
 
 <body>
     <div id="outer">
+        Parent Space
         <p id="inner">
-            Click
+            Click inner
         </p>
     </div>
 </body>
