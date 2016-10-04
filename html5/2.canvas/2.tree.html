@@ -13,7 +13,8 @@
     function draw() {
         var canvas = document.getElementById("trails");
         var context = canvas.getContext("2d");
-        
+
+        // 先清空，才不会再每次重新绘制的时候残留下雨的黑色背景
         context.clearRect(0, 0, 400, 600);
 
         drawTrees(context);
