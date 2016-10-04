@@ -1,0 +1,45 @@
+rain.png<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		 div>h2{
+		 	counter-increment:categorycounter;
+		 	counter-reset:subcounter;
+		 }
+
+		 div>h2:before{
+		 	content:counter(categorycounter,georgian) '.';
+
+		 	font-size:20pt;
+		 	font-weight:bold;
+		    margin-right:10px;
+		 }
+		 div>div{
+		 	counter-increment:subcounter;
+		 }
+		 div>div:before{
+		 	content:'第' counter(subcounter,cjk-ideographic) '本';
+		 	font-size:14pt;
+		 	font-weight: bold;
+		 	margin-left:24px;
+		 	margin-right:10px;
+		 }
+	</style>
+</head>
+<body> 
+  
+   <div> 
+   		<h2>第一级</h2>
+   		<div>内容一</div>
+   		<div>内容二</div>
+   		<div>内容三</div>
+		<h2>第二级</h2>
+   		<div>内容一</div>
+   		<div>内容二</div>
+   		<div>内容三</div>
+
+   </div>  
+</body>
+</html>

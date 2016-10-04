@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5存储</title>
+</head>
+<body>
+	<canvas id="canvas"> </canvas>
+	<script>
+	function set(key){
+		var src="ali.jpg";
+	    var img=document.createElement('img');
+	    img.addEventListener("load",function(){
+	    	var imgCanvas=document.getElementById('canvas');
+	    	var imgContext=imgCanvas.getContext("2d");
+	    	// 确保canvas元素的大小和图片尺寸一致
+	    	imgCanvas.width=this.width;
+	    	imgCanvas.height=this.height;
+
+	    	imgContext.drawImage(this,0,0,this.width,this.height);
+
+	    	// 用data url的形式取出  需要发布后才能执行
+	    	var imgAsDataUrl=imgCanvas.toDataURL("image/png");
+
+	    	// 保存到本地存储中
+	    	try{
+	    		localStorage.setItem(key,imgAsDataUrl);
+	    	}
+	    	catch(e){
+	    		 console.log("Storage failed: "+e);
+	    	}
+
+	    },false);
+	    img.src=src;
+	}
+
+    // 从本地缓存中获取图片并渲染 
+    function get(key)
+    {
+    	 var srcString=localStorage.getItem(key);
+    	 var imgObj=document.createElement('img');
+    	 imgObj.src=srcString;
+    	 document.body.appendChild(imgObj);
+    }
+	</script>
+</body>
+</html>

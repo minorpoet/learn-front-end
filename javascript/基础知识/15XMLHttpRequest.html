@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest</title>
+</head>
+
+<body>
+</body>
+<script>
+/**
+ *  open(<method>,<url>,[boolean async],[user],[password])
+ */
+
+/**
+ * 发送一个Http Get请求以获得指定URL的内容
+ * 验证响应类型为纯文本则调用回调函数
+ */
+function getText(url, callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onreadystatechange = function() {
+        // readyState: 0-Unsent 1-Opened 2-HEADERS_RECEIVED 3-Loading 4-Done
+        if (request.readyState === 4 && request.status === 200) {
+            var type = request.getResponseHeader("Content-Type");
+            if (type.match(/^text/)) {
+                callback(request.responseText);
+            } else {
+                callback('error Content-Type');
+            }
+        }
+    }
+    request.send(null);
+};
+
+// 同步请求text类型数据
+function getTextSync(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url, false); // false表示同步请求
+    request.send(null);
+
+    if (request.status !== 200) throw new Error(request.statusText);
+
+    var type = request.getResponseHeader('Content-Type');
+    if (type.match(/^text/)) {
+        return request.responseText;
+    } else if (type.match(/application\/json/)) {
+        return JSON.stringify(request.responseText);
+    }
+}
+
+/**
+ * 编码form表单数据
+ */
+function encodeFormData(data) {
+    if (!data) return "";
+    var pairs = [];
+    for (var name in data) {
+        if (!data.hasOwnProperty(name)) continue; //跳过继承来的属性
+        if (typeof data[name] === 'function') continue;
+        var value = data[name].toString();
+        name = encodeURIComponent(name.replace('%20', '+'));
+        value = encodeURIComponent(value.replace('%20', '+'));
+        pairs.push(name + '=' + value);
+    }
+    return pairs.join('&');
+}
+
+/**
+ * 提交表单
+ */
+function postData(url, data, callback) {
+    var request = new XMLHttpRequest();
+    request.open('POST', url);
+    request.onreadystatechange = function() {
+        if (request.readyState === 4 && callback) { // 只检查请求readyState进度， 不管http状态码status是否成功
+            callback(request);
+        }
+    }
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 设置请求头
+    request.send(encodeFormData(data));
+}
+
+
+/**
+ *  模拟超时获取
+ */
+function timedGetText(url, timeout, callback) {
+    var request = new XMLHttpRequest();
+    var timedout = false;
+    var timer = setTimeout(function() {
+        timedout = true; // 设置超时标记
+        request.abort(); // 中止请求
+    }, timeout);
+
+    request.open('GET', url);
+    request.onreadystatechange = function() {
+        if (request.readyState !== 4) return;
+        if (timedout) return;  // 如果已经超时 则不再处理
+
+        clearTimeout(timer);
+        if (request.status === 200) {
+            callback(request.responseText);
+        }
+    }
+
+    request.send(null);
+}
+</script>
+
+</html>

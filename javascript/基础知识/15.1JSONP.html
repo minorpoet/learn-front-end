@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp</title>
+</head>
+<body>
+	<script>
+	function getJSONP(url,callback){
+		// 为每次请求创建一个唯一的回调函数名称;
+		var cbnum = 'cb' + getJSONP.counter++;
+		var cbname = 'getJSONP.' + cbnum;
+
+		if(url.indexOf('?') === -1){
+			url += "?jsonp=" + cbname;
+		}
+		else {
+			url += "&jsonp=" + cbname;
+		}
+
+		var script = document.createElement('script');
+		getJSONP[cbnum] = function(response){
+			try{
+				callback(response);
+			}
+			finally{
+				delete getJSONP[cbnum];
+				script.parentNode.removeChild(scirpt);
+			}
+		};
+
+		script.src = url;
+		document.body.appendChild(script);
+	}
+
+	getJSONP.counter = 0; // 用于创建唯一回调函数名称的计数器
+
+
+	function customJsonp(url,method){
+		method = method||'callback';
+		if(url.indexOf('?') === -1){
+			url += "?jsonp="+method
+		}else{
+			url += "&jsonp=" + method;
+		}
+
+		var script = document.createElement('script');
+		script.src = url;
+		document.body.appendChild(script);
+	}
+
+	function callback(data){
+		console.log(data);
+		document.body.innerHTML = JSON.stringify(data);
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+   	body{
+   		margin:0;
+   		padding:0;
+   	}
+    #support {
+        position: fixed;
+        background-color: #8f8f8f;
+        bottom: 0;
+        padding:10px 15px;
+        width:100%;
+        font-weight: bold;
+        color:white;
+        text-align:center;
+    }
+
+    </style>
+</head>
+
+<body>
+	<canvas id="diagonal" style="border:1px solid;" width="200" height="200"></canvas>
+    <div id="support"></div>
+</body>
+<script>
+// 检测canvas兼容性
+try {
+    document.createElement("canvas").getContext("2d");
+    document.getElementById("support").innerHTML = "HTML5 Canvas is supported in your browser";
+} catch (e) {
+    document.getElementById("support").innerHTML = "HTML5 Canvas is not supported in your browser";
+}
+
+function drawDiagonal(){
+	var canvas = document.getElementById("diagonal");
+	var context = canvas.getContext("2d");
+
+	// 用绝对坐标来创建一条路径
+	context.beginPath();
+	context.moveTo(70,140);
+	context.lineTo(140,70);
+	// 将这条线绘制到canvas上
+	context.stroke();
+}
+
+function drawDiagonalByTranslate(){
+	var canvas = document.getElementById("diagonal");
+	var context = canvas.getContext("2d");
+	// 保存当前绘图状态
+	context.save();
+
+	// 向右下方移动绘图上下文 作为新的坐标零点line
+	context.translate(70,140);
+
+	// 以原点为七点，绘制与前面相同的线段
+	context.beginPath();
+	context.moveTo(0,0);
+	context.lineTo(70,-70);
+	context.stroke();
+}
+// window.addEventListener("load",drawDiagonal,true);
+window.addEventListener("load",drawDiagonalByTranslate,true);
+
+</script>
+
+</html>

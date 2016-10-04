@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tree</title>
+</head>
+
+<body>
+    <canvas id='trails' width="400" height="600" style="border:1px solid">
+    </canvas>
+    <script>
+    function draw() {
+        var canvas = document.getElementById("trails");
+        var context = canvas.getContext("2d");
+        
+        context.clearRect(0, 0, 400, 600);
+
+        drawTrees(context);
+        drawTrails(context);
+        drawText(context);
+    }
+
+    // 画树冠
+    function createCanopyPath(context) {
+        context.beginPath();
+
+        // 绘制树冠
+        context.moveTo(-25, -50);
+        context.lineTo(-10, -80);
+        context.lineTo(-20, -80);
+        context.lineTo(-5, -110);
+        context.lineTo(-15, -110);
+
+        // 树的顶点
+        context.lineTo(0, -140);
+
+        context.lineTo(15, -110);
+        context.lineTo(5, -110);
+        context.lineTo(20, -80);
+        context.lineTo(10, -80);
+        context.lineTo(25, -50);
+
+        context.closePath();
+
+    }
+
+    // 画树干
+    function createTreeTrunk(context) {
+        // 创建用作树干纹理的三阶水平渐变
+        var trunkGradient = context.createLinearGradient(-5, 50, 5, -50);
+        // 树干左侧边缘是一般成都的棕色
+        trunkGradient.addColorStop(0, '#663300');
+        // 树干中间偏左的位置颜色要淡一些
+        trunkGradient.addColorStop(0.4, '#996600');
+        // 树干右侧边缘的颜色要深一些
+        trunkGradient.addColorStop(1, '#552200');
+
+        context.fillStyle = trunkGradient;
+        context.fillRect(-5, -50, 10, 50);
+
+        // 创建垂直渐变， 以用作树冠在树干上的投影
+        var canopyShadow = context.createLinearGradient(0, -50, 0, 0);
+        canopyShadow.addColorStop(0, 'rgba(0,0,0,0.5');
+        canopyShadow.addColorStop(0.2, 'rgba(0,0,0,0.0');
+
+        context.fillStyle = canopyShadow;
+        context.fillRect(-5, -50, 10, 50);
+    }
+
+    // 填充树冠颜色
+    function fillCanopy(context) {
+        // 线条样式
+        context.lineWidth = 4;
+        context.lineJoin = 'round';
+        context.strokeStyle = '#663300';
+        context.stroke();
+        // 填充颜色
+        context.fillStyle = '#339900';
+        context.fill();
+    }
+
+    // 画树间小道
+    function drawTrails(context) {
+
+        // 画两条曲线
+        context.save();
+        context.translate(-10, 350);
+        context.beginPath(); // 重新开启一条绘制路径， 不过不重置的画 下面stroke会影响到放大2倍的树
+
+        context.moveTo(0, 0);
+        context.quadraticCurveTo(170, -50, 260, -190);
+        context.quadraticCurveTo(310, -250, 410, -250);
+        context.strokeStyle = '#663300'
+        context.lineWidth = 20;
+        context.stroke();
+
+        context.restore();
+    }
+
+    // 树荫
+    function drawShadow(context) {
+        context.save();
+
+        context.transform(1, 0, -0.5, 1, 0, 0);
+        context.scale(1, 0.6);
+        context.fillStyle = 'rgba(0,0,0,0.2)';
+        context.fillRect(-5, -50, 10, 50);
+
+        createCanopyPath(context);
+        context.fill();
+
+        context.restore();
+    }
+
+    function drawTrees(context) {
+        // 在130，250处绘制第一棵树
+        context.save();
+        context.translate(130, 250); // 将坐标原点移动到130，250处
+        drawShadow(context);
+        createCanopyPath(context);
+        fillCanopy(context);
+        createTreeTrunk(context);
+
+        context.restore();
+
+
+        // 在260，500位置处绘制第二棵树
+        context.save();
+        context.translate(260, 500);
+
+        // 将第二棵树的狂傲分别放大到原来的两倍
+        context.scale(2, 2);
+        drawShadow(context);
+        createCanopyPath(context);
+        fillCanopy(context);
+        createTreeTrunk(context);
+        context.restore();
+    }
+
+    function drawText(context) {
+        context.save();
+
+        context.font = "60px impact";
+
+        context.fillStyle = '#996600';
+        context.textAlign = 'center';
+        // 文字阴影
+        context.shadowColor = 'rgba(0,0,0,0.2)';
+        context.shadowOffsetX = 15;
+        context.shadowOffsetY = -8
+        context.shadowBlur = 2;
+
+        context.fillText('Happy Trails!', 200, 60, 400);
+        context.restore()
+    }
+
+    // 下雨效果
+    function rain() {
+        var canvas = document.getElementById('trails');
+        var context = canvas.getContext('2d');
+        var rain = new Image();
+        rain.src = "rain.png";
+        rain.onload = function() {
+            window.requestAnimFrame(loopAnimation, canvas);
+        }
+
+        window.requestAnimFrame = (function() {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                // 如果不存在上述函数，则使用旧的setTimeout技术模拟
+                function( /* function*/ callback, /* DOMElment */ element) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        function drawAFrame() {
+
+            // 绘制树和小道
+            draw();
+
+            context.save();
+
+            // 闪电效果
+            if (Math.random() > .01) {
+                context.globalAlpha = 0.65;
+                context.fillStyle = '#000000';
+                context.fillRect(0, 0, 400, 600);
+                context.globalAlpha = 1.0;
+            }
+
+            // 根据当前时间进行调整，绘制雨天图像
+            var now = Date.now();
+            context.fillStyle = context.createPattern(rain, 'repeat');
+
+            // 以不同比例绘制两张变换过的雨天图像来展示暴雨和大雪
+            // 填充面积比canvas大，并且基于时间进行重新定位
+            context.save();
+            context.translate(-256 + (0.1 * now) % 256, -256 + (0.5 * now) % 256);
+            context.fillRect(0, 0, 400 + 256, 600 + 256);
+            context.restore();
+
+            // 更密集
+            context.save();
+            context.translate(-256 + (0.08 * now) % 256, -256 + (0.2 * now) % 256);
+            context.fillRect(0, 0, 400 + 256, 600 + 256);
+            context.restore();
+
+
+            context.font = '32px san-serif';
+            context.textAlign = 'center';
+            context.fillStyle = '#990000';
+            context.fillText('Event canceled due to weather!', 200, 550, 400);
+
+            context.restore();
+
+        }
+
+        function loopAnimation(currentTime) {
+            drawAFrame();
+            window.requestAnimFrame(loopAnimation, canvas);
+        }
+    };
+    rain();
+    </script>
+</body>
+
+</html>
