@@ -17,8 +17,11 @@
         // 先清空，才不会再每次重新绘制的时候残留下雨的黑色背景
         context.clearRect(0, 0, 400, 600);
 
+        // 树
         drawTrees(context);
+        // 树间小道
         drawTrails(context);
+        // 文字
         drawText(context);
     }
 
@@ -87,7 +90,7 @@
         // 画两条曲线
         context.save();
         context.translate(-10, 350);
-        context.beginPath(); // 重新开启一条绘制路径， 不过不重置的画 下面stroke会影响到放大2倍的树
+        context.beginPath(); // 重新开启一条绘制路径， 不然不重置的话，下面stroke会影响到放大2倍的树
 
         context.moveTo(0, 0);
         context.quadraticCurveTo(170, -50, 260, -190);
@@ -130,7 +133,7 @@
         context.save();
         context.translate(260, 500);
 
-        // 将第二棵树的狂傲分别放大到原来的两倍
+        // 将第二棵树的宽高分别放大到原来的两倍
         context.scale(2, 2);
         drawShadow(context);
         createCanopyPath(context);
@@ -178,6 +181,7 @@
                 };
         })();
 
+        // 每一帧的效果
         function drawAFrame() {
 
             // 绘制树和小道
@@ -185,12 +189,12 @@
 
             context.save();
 
-            // 闪电效果
+            // 大部分时间让整个天气背景灰色的， 创建闪电效果
             if (Math.random() > .01) {
                 context.globalAlpha = 0.65;
                 context.fillStyle = '#000000';
                 context.fillRect(0, 0, 400, 600);
-                context.globalAlpha = 1.0;
+                context.globalAlpha = 1.0; // 重置透明度， 如果下一帧动画不进入这个if条件，则不会有灰色天气，极短的一帧白色底图类似闪电效果
             }
 
             // 根据当前时间进行调整，绘制雨天图像
