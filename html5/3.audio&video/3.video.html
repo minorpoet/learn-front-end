@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html5 video</title>
+</head>
+
+<body>
+    <video autoplay id="movies" oncanplay="startVideo();" onended="stopTimeLine();" autobuffer="true" width="400px" height="300px">
+        <source src="Intermission-Walk-in.ogv">
+        <source src="Intermission-Walk-in_512kb.mp4">
+    </video>
+    <canvas id="timeline" width="400px" height="300px"></canvas>
+    <script>
+    // 抓取帧的时间间隔， 单位ms
+    var updateInterval = 5000,
+        // 时序中帧的尺寸
+        frameWidth = 100,
+        frameHeight = 75,
+        // 时序的总帧数
+        frameRows = 4,
+        frameColumns = 4,
+        frameGrid = frameRows * frameColumns,
+
+        // 当前帧
+        frameCount = 0,
+        // 计时器id
+        intervalId,
+
+        videoStarted = false;
+
+    function updateFrame() {
+        var video = document.getElementById("movies");
+        var timeline = document.getElementById("timeline");
+
+        var ctx = timeline.getContext("2d");
+        // 根据帧数 确定每个小图像的位置 
+        var framePosition = frameCount % frameGrid;
+        var frameX = (framePosition % frameColumns) * frameWidth;
+        var frameY = (Math.floor(framePosition / frameRows)) * frameHeight;
+
+        ctx.drawImage(video, 0, 0, 400, 300, frameX, frameY, frameWidth, frameHeight);
+
+        frameCount++;
+    }
+
+    function startVideo() {
+        var timeline = document.getElementById("timeline");
+        var video = document.getElementById("movies");
+
+        // 保证只触发一次
+        if (videoStarted) return;
+
+        videoStarted = true;
+
+        updateFrame();
+        intervalId = setInterval(updateFrame, updateInterval);
+
+        timeline.onclick = function(evt) {
+            // 计算事件在canvas中的发生位置
+            evt = evt || window.event;
+            var x = (evt.pageX || evt.clientX) + (document.documentElement.scrollLeft || document.body.scrollLeft);
+            var y = (evt.pageY || evt.clientY) + (document.documentElement.scrollTop || document.body.scrollTop);
+            var offX = x - timeline.offsetLeft;
+            var offY = y - timeline.offsetTop;
+
+            // 计算点击的位置在网格中的位置
+            var clickedFrame = Math.floor(offY / frameHeight) * frameRows;
+            clickedFrame += Math.floor(offX / frameWidth);
+
+            // 获取当前点击事件对应的视频播放帧数
+            var seekedFrame = Math.floor(frameCount / frameGrid) * frameGrid + clickedFrame;
+
+            if (clickedFrame > (frameCount % frameGrid)) seekedFrame -= frameGrid;
+
+            if (seekedFrame < 0) return;
+
+            // 设置video的播放时间点，单位秒
+            video.currentTime = seekedFrame * updateInterval / 1000;
+
+            frameCount = seekedFrame;
+        }
+
+        video.onended = stopTimeline;
+    }
+
+    function stopTimeline() {
+        clearInterval(intervalId);
+    }
+
+
+    // 延迟开始，避免视频未开始导致绘制空白
+    setTimeout(startVideo, 500);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>audio video</title>
+</head>
+
+<body>
+    <h1>浏览器支持性检测</h1>
+    <script type="text/javascript">
+    var hasVideo = !!(document.createElement('video').canPlayType);
+    document.write("<p style='color:red'>浏览器" + (hasVideo ? "" : "不") + "支持html5 video</p>");
+    </script>
+    <br/>
+    <video src="movie.mp4" controls>
+        Your browser does not support HTML5 video
+    </video>
+</body>
+
+</html>

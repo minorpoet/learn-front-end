@@ -9,6 +9,15 @@
 <body>
 </body>
 <script>
+function createXHR() {
+    var request;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest(); // ie7+ ,firefox, chrome ,opera ...
+    } else {
+        request = new ActiveXObject("Miscrosoft.XMLHttp"); // ie6, ie7
+    }
+}
+
 /**
  *  open(<method>,<url>,[boolean async],[user],[password])
  */
@@ -18,7 +27,7 @@
  * 验证响应类型为纯文本则调用回调函数
  */
 function getText(url, callback) {
-    var request = new XMLHttpRequest();
+    var request = createXHR();
     request.open('GET', url);
     request.onreadystatechange = function() {
         // readyState: 0-Unsent 1-Opened 2-HEADERS_RECEIVED 3-Loading 4-Done
@@ -36,7 +45,7 @@ function getText(url, callback) {
 
 // 同步请求text类型数据
 function getTextSync(url) {
-    var request = new XMLHttpRequest();
+    var request = createXHR();
     request.open('GET', url, false); // false表示同步请求
     request.send(null);
 
@@ -71,7 +80,7 @@ function encodeFormData(data) {
  * 提交表单
  */
 function postData(url, data, callback) {
-    var request = new XMLHttpRequest();
+    var request = createXHR();
     request.open('POST', url);
     request.onreadystatechange = function() {
         if (request.readyState === 4 && callback) { // 只检查请求readyState进度， 不管http状态码status是否成功
@@ -97,7 +106,7 @@ function timedGetText(url, timeout, callback) {
     request.open('GET', url);
     request.onreadystatechange = function() {
         if (request.readyState !== 4) return;
-        if (timedout) return;  // 如果已经超时 则不再处理
+        if (timedout) return; // 如果已经超时 则不再处理
 
         clearTimeout(timer);
         if (request.status === 200) {

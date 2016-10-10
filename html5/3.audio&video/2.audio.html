@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html5 audio</title>
+</head>
+
+<body>
+    <audio id="clickSound">
+        <source src="johann_sebastian_bach_air.ogg">
+        <!-- 备用申明 -->
+        <source src="johann_sebastian_bach_air.mp4"> An audio clip from Johann Sebastian Bach.(这是一段audio不支持时的补充说明)
+    </audio>
+    <button id="toggle" onclick="toggleSound();">Play</button>
+    <script type="text/javascript">
+    function toggleSound() {
+        var music = document.getElementById('clickSound');
+        var toggle = document.getElementById('toggle');
+
+        if (music.paused) {
+            music.play();
+            toggle.innerHTML = 'Pause';
+        } else {
+            music.pause();
+            toggle.innerHTML = 'Play';
+        }
+    }
+    </script>
+</body>
+
+</html>
