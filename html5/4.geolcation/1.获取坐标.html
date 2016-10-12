@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Geolocation</title>
+    <style>
+    body {
+        font-size: 14px;
+    }
+    
+    #support {
+        margin: 10px 15px;
+        background-color: green;
+        padding: 15px 10px;
+    }
+    
+    #error {
+        margin: 10px 15px;
+        background-color: red;
+        padding: 15px 10px;
+    }
+    
+    #geolocation {
+        border: 1px solid black;
+        margin: 10px 15px;
+        padding: 15px 10px;
+    }
+    
+    .item {
+        font-weight: bold;
+        margin: 5px;
+        padding: 5px;
+    }
+    </style>
+</head>
+<script>
+function loadDemo() {
+    if (navigator.geolocation) {
+        document.getElementById("support").innerHTML = "Geolocation supported.";
+    } else {
+        document.getElementById("support").innerHTML = "Geolocation not supported in your browser."
+    }
+}
+
+/**
+ *   navigator.geolocation.getCurrentPosition(in PositionCallback successCallback,
+ *                                            in optional PositionErrorCallback errorCallback,
+ *                                            in optional PositionOptions options);
+ */
+
+/*
+ *   成功回调
+ *   @position 坐标对象
+ */
+function updateLocation(position) {
+    var latitude = position.coords.latitude; // 纬度
+    var longtitude = position.coords.longtitude; // 经度
+    var accuracy = position.coords.accuracy; // 准确度
+    var timestamp = position.timestamp; // 时间戳
+
+    document.getElementById("latitude").innerHTML = latitude;
+    document.getElementById("longtitude").innerHTML = longtitude;
+    document.getElementById("accuracy").innerHTML = accuracy;
+    document.getElementById("timestamp").innerHTML = timestamp;
+}
+
+/**
+ *   失败回掉
+ *   @error 错误对象 
+ *   @error.code 错误码  
+ *   @error.message 错误消息
+ */
+function handleLocationError(error) {
+    switch (error.code) {
+        case 0:
+            updateStatus("There was an error while retrieving your location: " + error.message);
+            break;
+
+        case 1:
+            updateStatus("The user prevented this page from retrieving a location.");
+            break;
+
+        case 2:
+            updateStatus("The browser was unable to determine your location: " + error.message);
+            break;
+
+        case 3:
+            updateStatus("There timed out before retrieving your location.");
+            break;
+    }
+}
+
+function updateStatus(msg) {
+    document.getElementById("error").innerHTML = msg;
+}
+</script>
+
+<body>
+    <p id="support"></p>
+    <div id="geolocation">
+        <div class="item"> latitude: <span id="latitude"></span></div>
+        <div class="item">longtitude:<span id="longtitude"></span></div>
+        <div class="item">timestamp: <span id="timestamp"></span></div>
+        <div class="item">accuracy: <span id="accuracy"></span></div>
+    </div>
+    <p id="error"></p>
+    <script type="text/javascript">
+    loadDemo();
+
+    // 获取一次
+    navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError, 
+    {
+        timeout: 10000
+    });
+    // 持续监听
+    var watchedId = navigator.geolocation.watchPosition(updateLocation,handleLocationError);
+
+    //停止监听
+    navigator.geolocation.clearWatch(watchedId);
+    </script>
+</body>
+
+</html>
