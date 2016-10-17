@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>reflow and repaint</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #container {
+        margin: 60px auto;
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+    
+    .row {
+        margin: 15px 10px 10px 10px;
+        min-height: 50px;
+        background-color: red;
+        clear: both;
+    }
+    
+    .row:nth-child(odd) {
+        background-color: green;
+    }
+    
+    .row .col-4 {
+        width: 32.33333%;
+        height: 100%;
+        float: left;
+        min-height: 50px;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="row">
+            <div class="col-4">Lorem ipsum dolor sit amet, ratione impedit. Aperiam reiciendis similique, eveniet ut atque laborum.</div>
+            <div class="col-4">2</div>
+            <div class="col-4">3</div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    <script>
+    // http://www.css88.com/archives/4996
+    // 避免频繁触发 回流和重绘的思想是 合并操作， 比如用cssText或className一次修改所有样式
+    // 1. 使用DocumentFragment 进行缓存操作，引发一次回流和重绘
+    // 2. 使用display:none 引发2次回流和重绘
+    // 3. cloneNode和replaceChild 引发一次
+
+
+    // 引发多次回流和重绘 在timeline中查看过程
+    var body = document.body;
+    setTimeout(function() {
+
+        body.style.backgroundColor = "#eee";
+        body.style.fontWeight = "bold"; // 回流 + 重绘
+        body.style.padding = "30px"; // 回流 + 重绘
+        body.style.fontSize = "30px"; // 回流 + 重绘
+    }, 500);
+
+    setTimeout(function() {
+
+        body.style.backgroundColor = "red"; // 重绘
+        //  body.style.padding = "60px";
+        // body.style.fontSize = "60px";
+
+        // body.appendChild(document.createTextNode("hello world2"));
+    }, 1000);
+    </script>
+</body>
+
+</html>

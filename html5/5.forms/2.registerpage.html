@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html5 form</title>
+</head>
+
+<body>
+    <form name="register">
+        <p>
+            <label for="runnername">Runner:</label>
+            <input type="text" id="runnername" name="runnername" placeholder="First name last name" required>
+        </p>
+        <p>
+            <label for="phone">Tel #</label>
+            <input type="tel" id="phone" name="phone" placeholder="(xxx) xxx-xxx">
+        </p>
+        <p>
+            <label for="emailaddress">E-mail:</label>
+            <input type="email" id="emailaddress" name="emailaddress" placeholder="For confirmation only">
+        </p>
+        <p>
+            <label for="dob">DOB:</label>
+            <input type="date" name="dob" id="dob" placeholder="MM/DD/YYY">
+        </p>
+        <fieldset>
+            <legend>T-shirt Size:</legend>
+            <p>
+                <input type="radio" id="small" name="tshirt" value="small">
+                <label for="small">Small</label>
+            </p>
+            <p>
+                <input type="radio" id="medium" name="tshirt" value="medium">
+                <label for="medium">Medium</label>
+            </p>
+            <p>
+                <input type="radio" id="large" name="tshirt" value="large">
+                <label for="large">Large</label>
+            </p>
+            <p>
+                <label for="style">Shirt Style:</label>
+                <input type="text" id="style" list="stylelist" title="Years of participartion">
+            </p>
+            <datalist id="stylelist">
+                <option value="White" label="1st Year"></option>
+                <option value="Gray">2and - 4th Year</option>
+                <option value="Navy">Veteran (5+ Years)</option>
+            </datalist>
+            <p>
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" placeholder="enter your password" onchange="checkPwd()">
+                <input type="password" id="pwd2" placeholder="enter your password again" onchange="checkPwd()" />
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Expectations:</legend>op
+            <p>
+                <label for="confidence">Confidence:</label>
+                <input type=range id="confidence" name="level" min="0" max="100" step="5" value="0" onchange="confidenceDisplay.value=(value+'%')">
+                <output id="confidenceDisplay">0%</output>
+            </p>
+            <p>
+                <label for="notes">Notes:</label>
+                <textarea name="notes" id="notes" maxLength="140"></textarea>
+            </p>
+        </fieldset>
+        <input type="submit" value="submit">
+    </form>
+    <script>
+    function checkPwd () {
+    	var pwd1 = document.getElementById("pwd");
+    	var pwd2 = document.getElementById("pwd2");
+
+    	// 设置自定义验证错误提示, 可以通过validityState对象来获取到
+    	if(pwd1.vale !== pwd2.value){
+    		pwd1.setCustomValidity("Your passwords do not match.");
+    	}
+    	else{
+    		pwd1.setCustomValidity("");
+    	}
+    }
+
+    function invalidHandler(evt) {
+        var label = evt.srcElement.parentElement.getElementsByTagName("label")[0];
+        label.style.color = "red";
+
+        evt.stopPropagation();
+       // evt.preventDefault(); // 阻止浏览器的默认提示功能
+    }
+
+    function loadDemo() {
+        // 验证不通过事件, 当验证通过时候会还原invalidHandler之前的状态
+        document.register.addEventListener("invalid", invalidHandler, true);
+    }
+
+    window.addEventListener("load", loadDemo, false);
+    </script>
+</body>
+
+</html>

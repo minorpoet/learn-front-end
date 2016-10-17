@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html5表单</title>
+    <style>
+    .gap {
+        margin-top: 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="gap"></div>
+        <label>date:</label>
+        <input type="date">
+        <div class="gap"></div>
+        <label for="email">email:</label>
+        <input type="email" id="email" />
+        <div class="gap"></div>
+        <label for="number">number:</label>
+        <input type="number" min="1" max="100" value="25" />
+        <div class="gap"></div>
+        <label for="age">range:</label>
+        <input type="range" min="18" max="120" id="age" onchange="ageDisplay.value=value" />
+        <output id="ageDisplay">18</output>
+        <div class="gap"></div>
+        <label>不确定的Progress:</label>
+        <progress></progress>
+        <div class="gap"></div>
+        <label>确定的Progress:</label>
+        <progress value="30" max="100"></progress>
+        <div class="gap"></div>
+        <label>search:</label>
+        <input type="search" />
+        <div class="gap"></div>
+        <labeL>placeholder:</labeL>
+        <input type="text" placeholder="hello wolrd" />
+        <div class="gap"></div>
+        <label for="">autofocus:</label>
+        <input type="text" autofocus/>
+        <div class="gap"></div>
+        <label for="">spellcheck:</label>
+        <textarea spellcheck="true"></textarea>
+        <div class="gap"> </div>
+        <label>datalist</label>
+        <datalist id="contactlist">
+            <option value="susongyan@qq.com" label="Su" />
+            <option value="scott@gmail.com" label="scott" />
+        </datalist>
+        <input type="email" id="contacts" list="contactlist" />
+        <div class="gap"></div>
+        <label for="">required:</label>
+        <input type="text" style="width:200px;" placeholder="can't be empty when submit" required/>
+        <div class="gap"> </div>
+        <button type="submit">submit</button>
+    </form>
+</body>
+
+</html>
