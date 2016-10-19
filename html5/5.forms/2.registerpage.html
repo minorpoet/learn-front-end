@@ -82,7 +82,7 @@
     }
 
     function invalidHandler(evt) {
-        var label = evt.srcElement.parentElement.getElementsByTagName("label")[0];
+        var label = evt.target.parentElement.getElementsByTagName("label")[0];
         label.style.color = "red";
 
         evt.stopPropagation();

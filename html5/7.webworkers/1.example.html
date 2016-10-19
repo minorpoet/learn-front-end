@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器支持性检查</title>
+</head>
+
+<body>
+    <p id="support">What?! you're still using so low a browser, task action to update it!</p>
+    <script>
+    (function() {
+        if (typeof(Worker) !== "undefined") {
+            document.getElementById("support").innerHTML = "Excellent! Your browser supports Web Workers";
+        }
+    })();
+
+    
+    // 构造函数参数是要在线程中执行的js代码;
+    var myWorker = new Worker("task.js");
+    myWorker.onmessage = function(evt){
+    	console.log("Worker said : " + evt.data) ;
+    }
+
+    myWorker.postMessage("ali");
+    </script>
+</body>
+
+</html>
