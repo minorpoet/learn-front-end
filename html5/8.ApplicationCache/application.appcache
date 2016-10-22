@@ -1,0 +1,14 @@
+CACHE MANIFEST
+#要缓存的文件
+about.html
+html5.css
+index.html
+
+#不缓存的登录页面
+NETWORK
+signup.html
+
+FALLBACK
+signup.html offline.html
+/app/ajax/	default.html
+ 
