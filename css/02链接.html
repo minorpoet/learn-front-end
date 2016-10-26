@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> </title>
+    <style>
+    a:link,
+    a:visited {
+        text-decoration: none;
+        border-bottom: 1px dotted #000;
+    }
+    
+    a:hover,
+    a:focus,
+    a:active {
+        border-bottom-style: solid;
+    }
+    
+    a:target {
+        background-color: yellow;
+    }
+    
+    a#github {
+        display: block;
+        width: 9em;
+        padding: 5px 10px;
+        line-height: 1.4;
+        text-align: center;
+        text-decoration: none;
+        border: 1px solid #66a300;
+        background-color: #8cca12;
+        color: #fff;
+    }
+    
+    a#github:focus {
+        background-color: #f7a300;
+        border-color: #ff7400;
+    }
+    
+    a.tooltip {
+        position: relative;
+    }
+    
+    a.tooltip span {
+        display: none;
+    }
+    
+    a.tooltip:hover span,
+    a.tooltip:focus span {
+        display: block;
+        position: absolute;
+        top: 1em;
+        left: 2em;
+        width:150px;
+        padding: 0.1em 0.6em;
+        border: 1px solid #996633;
+        background-color: #ffff66;
+        color: #000;
+    }
+    </style>
+</head>
+
+<body>
+    <p><a href="#mainContent">Skip to main content</a></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ex in recusandae tempora quo molestiae nam, error nisi, voluptatibus quasi repudiandae accusamus veniam, aliquid dolores iste nulla molestias expedita repellat!</p>
+    <h1><a name="mainContent"  >main Content</a></h1>
+    <p><a href="http://	minorpoet.github.io/learn-front-end" id="github" target="_blank">minorpoet's github </a></p>
+    <p><a href="http://www.andybudd.com" class="tooltip">
+    	Andy Budd <span>(This website rocks)</span>
+    </a> is a web developer based in Brghton England</p>
+</body>
+
+</html>

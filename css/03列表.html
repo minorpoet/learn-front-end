@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <style>
+    body {
+        font-family: "Myriad Pro", Frutiger, "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, sans-serif;
+        font-size: 1.4em;
+    }
+    /*
+	清除浏览器默认的样式
+	*/
+    
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+    
+    #simple-list li {
+        background: url(img/tick.png) no-repeat 0 50%;
+        padding-left: 30px;
+    }
+    
+    .clear{
+    	clear:both;
+    }
+    ul.nav {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        width: 8em;
+        background-color: #8db400;
+        border: 1px solid #386b02;
+    }
+    
+    ul.nav a {
+        display: block;
+        color: #2b3f00;
+        text-decoration: none;
+        border-top: 1px solid #e4ffd3;
+        border-bottom: 1px solid #486b02;
+        background: url(img/arrow.gif) no-repeat 5% 50%;
+        padding: 0.3em 1em;
+    }
+    
+    ul.nav .last a {
+        border-bottom: 0;
+    }
+    
+    ul.nav a:hover,
+    ul.nav a:focus,
+    ul.nav .selected a {
+        color: #e4ffd3;
+        background-color: #6da203;
+    }
+
+	ol.pagination{
+		list-style-type: none;
+	}
+    ol.pagination li{
+		float:left;
+		margin-right:0.6em;
+    }
+    ol.pagination a,
+    	ol.pagination li.seleted{
+    		display: block;
+    		padding:0.2em 0.5em;
+    		border:1px solid #ccc;
+    		text-decoration: none;
+    	}
+    	ol.pagination a:hover,
+    	ol.pagination a:focus,
+    	ol.pagination li.selected a{
+    		background-color: blue;
+    		color:white;
+    	}
+    	ol.pagination a[rel="next"],
+    	ol.pagination a[rel="prev"]{
+    		border:none;
+    	}
+    	ol.pagination a[rel="next"]:after{
+    		content:"\00BB";
+    		padding-left:0.5em;
+    	}
+    	ol.pagination a[rel="prev"]:before{
+    		content:"\00AB";
+    		padding-right:0.5em;
+    	}
+	
+    	ul.image-nav{
+    		width:72em;
+    		background: #FAA819 url(img/mainNavBg.gif) repeat-x;
+    		overflow: hidden; /*用来清除浮动*/
+    	}
+		ul.image-nav li{
+			float: left;
+		}
+		ul.image-nav a{
+			display:block;
+			padding:0 3em;
+			line-height: 2.1em;
+			text-decoration: none;
+			color:#fff;
+			background : url(img/divider.gif) repeat-y left top;
+		} 
+		ul.image-nav .first a{
+			background-image: none;
+		}
+		ul.image-nav  a:hover,
+		ul.image-nav a:focus{
+			color:#333;
+		}
+    </style>
+</head>
+
+<body>
+    <article>
+        <section id="simple-list">
+            <h2>1. simple list</h2>
+            <ul>
+                <li>Write chapter</li>
+                <li>Go shopping</li>
+                <li>Cook dinner</li>
+                <li>Watch Lost</li>
+            </ul>
+        </section>
+        <section>
+            <h2>2. vertcal-navigation </h2>
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li class="selected"><a href="#">About</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#">Our Work</a></li>
+                <li><a href="#">News</a></li>
+                <li class="last"><a href="#">Contact</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>3. pagination</h2>
+            <ol class="pagination">
+                <li><a href="search.html?page=1" rel="prev">Prev</a></li>
+                <li><a href="search.html?page=1">1</a></li>
+                <li><a href="search.html?page=2">2</a></li>
+                <li class="selected"><a href="search.html?page=3">3</a></li>
+                <li><a href="search.html?page=4">4</a></li>
+                <li><a href="search.html?page=5">5</a></li>
+                <li><a href="search.html?page=3" rel="next">Next</a></li>
+            </ol>
+        </section>
+        <div class="clear"></div>
+        <section>
+        	<h2>4. image navigation</h2>
+        	<ul class="image-nav">
+        		<li class="first"><a href="#">Home</a></li>
+        		<li><a href="#">Abount</a></li>
+        		<li><a href="#">News</a></li>
+        		<li><a href="#">Products</a></li>
+        		<li><a href="#">Services</a></li>
+        		<li><a href="#">Clients</a></li>
+        		<li><a href="#">Case Studies</a></li>
+         	</ul>
+        </section>
+    </article>
+</body>
+
+</html>
