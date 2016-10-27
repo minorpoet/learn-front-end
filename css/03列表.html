@@ -24,9 +24,10 @@
         padding-left: 30px;
     }
     
-    .clear{
-    	clear:both;
+    .clear {
+        clear: both;
     }
+    
     ul.nav {
         margin: 0;
         padding: 0;
@@ -56,63 +57,148 @@
         color: #e4ffd3;
         background-color: #6da203;
     }
-
-	ol.pagination{
-		list-style-type: none;
-	}
-    ol.pagination li{
-		float:left;
-		margin-right:0.6em;
+    
+    ol.pagination {
+        list-style-type: none;
     }
+    
+    ol.pagination li {
+        float: left;
+        margin-right: 0.6em;
+    }
+    
     ol.pagination a,
-    	ol.pagination li.seleted{
-    		display: block;
-    		padding:0.2em 0.5em;
-    		border:1px solid #ccc;
-    		text-decoration: none;
-    	}
-    	ol.pagination a:hover,
-    	ol.pagination a:focus,
-    	ol.pagination li.selected a{
-    		background-color: blue;
-    		color:white;
-    	}
-    	ol.pagination a[rel="next"],
-    	ol.pagination a[rel="prev"]{
-    		border:none;
-    	}
-    	ol.pagination a[rel="next"]:after{
-    		content:"\00BB";
-    		padding-left:0.5em;
-    	}
-    	ol.pagination a[rel="prev"]:before{
-    		content:"\00AB";
-    		padding-right:0.5em;
-    	}
-	
-    	ul.image-nav{
-    		width:72em;
-    		background: #FAA819 url(img/mainNavBg.gif) repeat-x;
-    		overflow: hidden; /*用来清除浮动*/
-    	}
-		ul.image-nav li{
-			float: left;
-		}
-		ul.image-nav a{
-			display:block;
-			padding:0 3em;
-			line-height: 2.1em;
-			text-decoration: none;
-			color:#fff;
-			background : url(img/divider.gif) repeat-y left top;
-		} 
-		ul.image-nav .first a{
-			background-image: none;
-		}
-		ul.image-nav  a:hover,
-		ul.image-nav a:focus{
-			color:#333;
-		}
+    ol.pagination li.seleted {
+        display: block;
+        padding: 0.2em 0.5em;
+        border: 1px solid #ccc;
+        text-decoration: none;
+    }
+    
+    ol.pagination a:hover,
+    ol.pagination a:focus,
+    ol.pagination li.selected a {
+        background-color: blue;
+        color: white;
+    }
+    
+    ol.pagination a[rel="next"],
+    ol.pagination a[rel="prev"] {
+        border: none;
+    }
+    
+    ol.pagination a[rel="next"]:after {
+        content: "\00BB";
+        padding-left: 0.5em;
+    }
+    
+    ol.pagination a[rel="prev"]:before {
+        content: "\00AB";
+        padding-right: 0.5em;
+    }
+    
+    ul.image-nav {
+        width: 72em;
+        background: #FAA819 url(img/mainNavBg.gif) repeat-x;
+        overflow: hidden;
+        /*用来清除浮动*/
+    }
+    
+    ul.image-nav li {
+        float: left;
+    }
+    
+    ul.image-nav a {
+        display: block;
+        padding: 0 2em;
+        line-height: 2.1em;
+        text-decoration: none;
+        color: #fff;
+        background: url(img/divider.gif) repeat-y left top;
+    }
+    
+    ul.image-nav .first a {
+        background-image: none;
+    }
+    
+    ul.image-nav a:hover,
+    ul.image-nav a:focus {
+        color: #333;
+    }
+    
+    ul.sliding-nav {
+        width: 72em;
+        overflow: hidden;
+    }
+    
+    ul.sliding-nav li {
+        float: left;
+        background: url(img/tab-right.gif) no-repeat right top;
+    }
+    
+    ul.sliding-nav li a {
+        display: block;
+        padding: 0 2em;
+        line-height: 2.5em;
+        background: url(img/tab-left.gif) no-repeat left top;
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    ul.sliding-nav a:hover,
+    ul.sliding-nav a:focus {
+        color: #333;
+    }
+    
+    ul.dropdown-nav,
+    ul.dropdown-nav ul {
+        border: 1px solid #486b02;
+        background-color: #8bd400;
+        float: left;
+    }
+    
+    ul.dropdown-nav li {
+        float: left;
+        width: 8em;
+        background-color: #8bd400;
+    }
+    
+    ul.dropdown-nav a {
+        display: block;
+        color: #2b3f00;
+        text-decoration: none;
+        padding: 0.3em 1em;
+        border-right: 1px solid #486b02;
+        border-left: 1px solid #e4ffd3;
+    }
+    
+    ul.dropdown-nav li li a {
+        border-top: 1px solid #e4ffd3;
+        border-bottom: 1px solid #486b02;
+        border-left: 0;
+        border-right: 0;
+    }
+    
+    ul.dropdown-nav li:last-child a {
+        border-right: 0;
+        border-bottom: 0;
+    }
+    
+    ul.dropdown-nav li ul {
+        width: 8em;
+        position: absolute;
+        left: -999em;
+    }
+    
+    ul.dropdown-nav li:hover ul {
+        left: auto;
+    }
+    
+    ul.dropdown-nav a:hover,
+    ul.dropdown-nav a:focus {
+        color: #e4ffd3;
+        background-color: #6da203;
+    }
     </style>
 </head>
 
@@ -152,16 +238,54 @@
         </section>
         <div class="clear"></div>
         <section>
-        	<h2>4. image navigation</h2>
-        	<ul class="image-nav">
-        		<li class="first"><a href="#">Home</a></li>
-        		<li><a href="#">Abount</a></li>
-        		<li><a href="#">News</a></li>
-        		<li><a href="#">Products</a></li>
-        		<li><a href="#">Services</a></li>
-        		<li><a href="#">Clients</a></li>
-        		<li><a href="#">Case Studies</a></li>
-         	</ul>
+            <h2>4. image navigation</h2>
+            <ul class="image-nav">
+                <li class="first"><a href="#">Home</a></li>
+                <li><a href="#">Abount</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Case Studies</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>5. sliding doors nav</h2>
+            <ul class="sliding-nav">
+                <li class="first"><a href="#">Home</a></li>
+                <li><a href="#">Abount</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Case Studies</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>6. dropdown nav</h2>
+            <ul class="dropdown-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a>
+                    <ul>
+                        <li><a href="#">Silverback</a></li>
+                        <li><a href="#">Font Deck</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Services</a>
+                    <ul>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Development</a></li>
+                        <li><a href="#">Consultancy</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </section>
+        <section>
+        	<h2>7. image map</h2>
+        	<div class="imagemap">
+        		<img src="img/nerdcore.jpg" alt="some of the Clearleft team" width="333" height=“500”>
+        	</div>
         </section>
     </article>
 </body>
