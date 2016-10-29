@@ -199,6 +199,90 @@
         color: #e4ffd3;
         background-color: #6da203;
     }
+    
+    .imagemap {
+        width: 333px;
+        height: 500px;
+        position: relative;
+    }
+    
+    .imagemap ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .imagemap a {
+        position: absolute;
+        display: block;
+        background-image: url(img/shim.gif);
+        border: 1px solid transparent;
+        text-decoration: none;
+    }
+    
+    .imagemap a .outer {
+        display: block;
+        border: 1px solid transparent;
+    }
+    
+    .imagemap a .inner {
+        display: block;
+        width: 50px;
+        height: 60px;
+        border: 1px solid transparent;
+    }
+    
+    .imagemap .rich a {
+        top: 50px;
+        left: 80px;
+    }
+    
+    .imagemap .sophie a {
+        top: 90px;
+        left: 200px;
+    }
+    
+    .imagemap .cath a {
+        top: 150px;
+        left: 60px;
+    }
+    
+    .imagemap .james a {
+        top: 140px;
+        left: 145px;
+    }
+    
+    .imagemap .paul a {
+        top: 170px;
+        left: 250px;
+    }
+    
+    .imagemap a .note {
+        position: absolute;
+        bottom: -2em;
+        width: 7em;
+        padding: 0.2em 0.5em;
+        background-color: #ffc;
+        text-align: center;
+        margin-left: -4em;
+        left: -1000em;
+        border-radius: .5em;
+    }
+    
+    .imagemap a:hover .note,
+    .imagemap a:focus .note {
+        left: 25px;
+    }
+    
+    .imagemap a:hover .inner,
+    .imagemap a:focus .inner {
+        border-color: #fff;
+    }
+    
+    .imagemap a:hover .outer,
+    .imagemap a:focus .outer {
+        border-color: #000;
+    }
     </style>
 </head>
 
@@ -281,11 +365,21 @@
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </section>
+        <div class="clear"></div>
         <section>
-        	<h2>7. image map</h2>
-        	<div class="imagemap">
-        		<img src="img/nerdcore.jpg" alt="some of the Clearleft team" width="333" height=“500”>
-        	</div>
+            <h2>7. image map</h2>
+            <div class="imagemap">
+                <img src="img/nerdcore.jpg" alt="some of the Clearleft team" width="333" height=“500”>
+                <ul>
+                    <li class="rich"><a href="https://minorpoet.github.io/learn-front-end/"><span class="outer"><span class="inner">
+                    	<span class="note">Richard Rutter</span>
+                    </span></span></a></li>
+                    <li class="sophie"><a href="https://minorpoet.github.io/learn-front-end/"><span class="outer"><span class="inner"><span class="note">Sophie Barrett</span></span></span></a></li>
+                    <li class="cath"><a href="https://minorpoet.github.io/learn-front-end/"><span class="outer"><span class="inner"><span class="note">Cathy Jones</span></span></span></a></li>
+                    <li class="james"><a href="https://minorpoet.github.io/learn-front-end/"><span class="outer"><span class="inner"><span class="note">James Box</span></span></span></a></li>
+                    <li class="paul"><a href="https://minorpoet.github.io/learn-front-end/"><span class="outer"> <span class="inner"><span class="note">Paul Annett</span></span></span></a></li>
+                </ul>
+            </div>
         </section>
     </article>
 </body>
