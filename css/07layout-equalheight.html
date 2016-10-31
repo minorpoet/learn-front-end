@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>等高布局</title>
+	<style>
+	body{
+		margin:0;
+		padding:0;
+	}
+	.wrapper{
+		width:100%;
+		overflow: hidden;
+		position:relative;
+	}
+	.box{
+		width:250px;
+ 		float:left;
+		display:inline;
+		padding:20px;
+		background:#89ac10 url(img/top.gif) no-repeat left top;
+		padding-left:20px;
+		padding-right:20px;
+		padding-top:20px;
+		padding-bottom:520px;
+		margin-bottom:-500px;
+		margin-left:20px;
+	}
+	.bottom{
+		position: absolute;;
+		bottom:0;
+		height:20px;
+		width:290px;
+		background: url(img/bottom.gif) #89ac10 bottom left no-repeat;
+		margin-left:-20px;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="box">
+			<h1>Andy Budd</h1>
+			<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ipsa laboriosam architecto, molestiae. Nobis doloremque, officiis quo at reprehenderit quia quisquam ea est nostrum natus, vel odio, incidunt error ipsa.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi consequatur est explicabo ipsum, eaque perferendis fugiat ab, delectus cupiditate eum pariatur tempore voluptates neque qui perspiciatis! Nobis, esse. Explicabo, nisi.
+			</p>
+			<div class="bottom"></div>
+		</div>
+		<div class="box">
+			<h1>Richard Rutter</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum officia, voluptatibus fugiat dignissimos sunt temporibus eos mollitia quam dolor corrupti laboriosam ipsum distinctio omnis modi quod. Accusantium ex, ratione sapiente.</p>
+			<div class="bottom"></div>
+		</div>
+		<div class="box">
+			<h1>Jeremy Keith</h1>
+			<p>...</p>
+			<div class="bottom"></div>
+		</div>
+	</div>
+</body>
+</html>
