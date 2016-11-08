@@ -1,0 +1,4 @@
+/* 整站的css样式表主入口 */
+
+@import url("reset.css");
+@import url("screen.css");
