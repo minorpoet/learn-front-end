@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    button {
+    	cursor:pointer;
+
+        /* 使用em实现弹性布局 */
+        padding: .3em .8em;
+        border: 1px solid rgba(0, 0, 0, .1);
+
+        /* 利用主色调 + 透明色阶 */
+        background: #58a linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+        box-shadow: 0 0.05em 0.25em rgba(0, 0, 0, .5);
+        text-shadow: 0 -0.05em rgba(	0, 0, 0, .5);
+
+        border-radius: .2em;
+        color: #fff;
+
+        /* 建立font-size和父级字号的关系 与及 line-height和font-size的关系  */
+        font-size: 125%;
+        line-height: 1.5;
+    }
+    
+    button.cancel {
+        background-color: #c00;
+    }
+    
+    button.ok {
+        background-color: #6b0;
+    }
+	
+	.callout{
+		position:relative;
+	}
+	.callout:before{
+		content:"";
+		position:absolute;
+		top: -.4em;
+		left:1em;
+		padding:.35em;
+		background:inherit;
+		border:inherit;
+		border-right:0;
+		border-bottom: 0;
+		transform:rotate(45deg);
+	}
+
+    /* 继承父级字体颜色 */
+    a {
+        color: inherit;
+    }
+     
+    .code {
+        background: #d0d5da;
+        padding: .3em .8em;
+        border-radius: .2em;
+        color: #005d00;
+    }
+    
+    ul li {
+        margin-bottom: .8em;
+    }
+    </style>
+</head>
+
+<body>
+    <button>Yes!</button>
+    <button class="cancel">Cancel!</button>
+    <button class="ok">Ok!</button>
+    <label for="yourname">Your username:
+        <input type="text" id="yourname" class="callout">
+    </label>
+    <h2>
+    	DRY: don't repeat yourself
+    </h2>
+    <p>
+        <ul>
+            <li>当某些值相互依赖时，应该把它们的相互关系用代码表达出来。比如<span class="code">font-size:20px; line-height:1.5;</span></li>
+            <li>区分开哪些效果应该跟着按钮一起放大，哪些效果是保持不变的，实现弹性布局。选择em或者rem</li>
+            <li>将半透明的黑色或白色叠加在主色调上，即可产生主色调的亮色的暗色变体 <span class="code">border-color, background, box-shadow, text-shadow</span></li>
+        </ul>
+    </p>
+</body>
+
+</html>
