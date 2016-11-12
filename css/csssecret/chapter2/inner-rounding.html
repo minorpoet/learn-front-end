@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>内圆角</title>
+    <style>
+    .outer {
+        width: 300px;
+        margin: 20px;
+        background: #655;
+        padding: .8em;
+    }
+    
+    .inner {
+        background: tan;
+        border-radius: .8em;
+        padding: 1em;
+    }
+    
+    .inner-rounding {
+        width: 300px;
+        margin: 20px;
+        background: tan;  
+        border-radius: .8em;
+        box-shadow: 0 0 0 .5em #655; /* 用box-shadow扩展来填充 border-radius和outline之间的空白 */
+        outline: .6em solid #655;
+        padding: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <p>tow divs, inner:border-radius; outer: padding</p>
+            I hava a nice subtle inner rounding. don't I look pretty?
+        </div>
+    </div>
+    <div class="inner-rounding">
+        I hava a nice subtle inner rounding. don't I look pretty?
+    </div>
+</body>
+
+</html>
