@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>border</title>
+    <style>
+    body {
+        background-color: #666;
+        line-height: 1;
+    }
+    
+    .clear {
+        clear: both;
+    }
+    
+    div {
+        width: 250px;
+        height: 250px;
+        float: left;
+        margin-left: 20px;
+        background-color: #b00;
+    }
+    
+    .translucent-borders {
+        border: 20px solid hsla(0, 0%, 100%, .5);
+        /* 默认值是border-box，背景色会透到边框上；*/
+        background-clip: padding-box;
+    }
+    
+    .translucent-borders-trial {
+        border: 20px solid hsla(0, 0%, 100%, .5);
+        /* 默认值是border-box，背景色会透到边框上；*/
+        /* background-clip: padding-box; */
+    }
+    
+    .multi-borders-boxshadow {
+        clear: both;
+        margin-top: 30px;
+        background-color: yellowgreen;
+        box-shadow: 0 0 0 20px #655, 0 0 0 30px deeppink, 0 2px 5px 40px rgba(0, 0, 0, .6);
+    }
+    
+    .multi-borders-outline {
+        margin-left: 100px;
+        margin-top: 60px;
+        background: yellowgreen;
+        border: 20px solid #3a0e0e;
+        border-radius: 20px;
+        outline: 10px solid deeppink;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="translucent-borders">
+        <h2>半透明边框</h2>
+        <p>背景色默认会延伸到边框上，使用css3的 background-clip: padding-box; 将背景色从边框裁掉 </p>
+        <p>background-color: red; </p>
+        <p>border: 20px solid hsla(0, 0%, 100%, .5);</p>
+        <p>background-clip: padding-box;</p>
+    </div>
+    <div class="translucent-borders-trial">
+        <h2>半透明边框 - 对照组</h2>
+        <p>背景色默认会延伸到边框上 </p>
+        <p>background-color: red; </p>
+        <p>border: 20px solid hsla(0, 0%, 100%, .5);</p>
+    </div>
+    <div class="multi-borders-boxshadow">
+        <h2>多重边框  box-shadow</h2>
+        <p>
+            利用 box-shadow 第四个参数[spread-radius]
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow">		
+            	 https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow</a>
+        </p>
+        <p>box-shadow不影响布局</p>
+    </div>
+    <div class="multi-borders-outline">
+    	<h2>多重边框 outline + border</h2>
+    	<p>outline同样不占据布局</p>
+    	<p>outline 不会像box-shadow一样 跟着border-radius圆角变化</p>
+    </div>
+</body>
+
+</html>
