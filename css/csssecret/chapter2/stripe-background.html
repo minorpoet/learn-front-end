@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>条纹背景</title>
+    <style>
+    div {
+        width: 200px;
+        height: 150px;
+        margin: 10px;
+    }
+    
+    .horizontal-stripes {
+        background: linear-gradient(#fb3 30%, #58a 0);
+        background-size: 100% 30px;
+    }
+    
+    .vertical-stripes {
+        background: linear-gradient(to right, #fb3 50%, #58a 0);
+        background-size: 30px 100%;
+    }
+    
+    .diagonal-stripes {
+        background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);
+        background-size: 42.426406871px 42.426406871px;
+    }
+    
+    .diagonal-stripes2 {
+        background: repeating-linear-gradient(45deg, #fb3, #fb3 15px, #58a 0, #58a 30px);
+    }
+    </style>
+</head>
+
+<body>
+	<h2><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Using_CSS_gradients">linear-gradient</a></h2>
+    <div class="horizontal-stripes"></div>
+    <div class="vertical-stripes"></div>
+    <div class="diagonal-stripes"></div>
+    <div class="diagonal-stripes2"></div>
+</body>
+
+</html>
