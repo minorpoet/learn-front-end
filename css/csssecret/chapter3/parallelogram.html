@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>平行四边形</title>
+    <style>
+    a {
+        display: inline-block;
+        text-decoration: none;
+        padding: 1em 1.5em;
+        margin: 2em;
+        background: #6a6ad0;
+        color:white;
+    }
+
+    /* 1. 嵌套元素方案， 外层和里层角度相反*/
+    .button-twolayer {
+        display: inline-block;
+        text-decoration: none;
+        padding: .5em .8em;
+        transform: skewX(-45deg);
+    }
+    
+    .button-twolayer > div {
+        transform: skewX(45deg);
+    }
+
+    /* 2. 伪元素方案， 伪元素的样式不会影响主体内容*/   
+    .button-pseude {
+        position: relative;
+        background: none;
+    }
+    
+    .button-pseude::before {
+        content: ""; /*一定要有content才能生成一个矩形*/
+        position: absolute;
+        background: #6a6ad0;
+        z-index:-1;
+        transform: skewX(-45deg);
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+    }
+    </style>
+</head>
+
+<body>
+    <h2> 1. 嵌套元素方案： 里层元素逆变换</h2>
+    <a href="#yolo" class="button-twolayer">
+        <div>Click me</div>
+    </a>
+    <h2>2. 伪元素方案， 所有样式作用于伪元素不会影响到元素内容 </h2>
+    <a href="#" class="button-pseude">Fuck 漫狗</a>
+</body>
+
+</html>
