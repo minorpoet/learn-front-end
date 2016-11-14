@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>椭圆</title>
+    <style>
+    div {
+        width: 200px;
+        height: 200px;
+        background: tan;
+        margin: 20px;
+    }
+    
+    .ellipse {
+        border-radius: 50%;
+    }
+    
+    .ellipse1 {
+        border-radius: 50%/ 100% 100% 0 0;
+    }
+    
+    .ellipse2 {
+        border-radius: 100% 0 0 100% / 50%; /* 水平半径/垂直半径*/
+    }
+    
+    .ellipse3 {
+    	height:150px;
+        border-radius: 100% 0 0 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="ellipse"></div>
+    <div class="ellipse1"></div>
+    <div class="ellipse2"></div>
+    <div class="ellipse3"></div>
+</body>
+
+</html>
