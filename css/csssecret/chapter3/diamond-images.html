@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>菱形</title>
+    <style>
+    .picture {
+        width: 160px;
+        margin: 100px;
+        transform: rotate(45deg);
+        overflow: hidden;
+    }
+    /* 再旋转背景图并放大一定比例以填满菱形的对角线（勾股定理）*/
+    .picture>img {
+        max-width: 100%;
+        transform: rotate(-45deg) scale(1.42);
+    }
+    
+    .diamond {
+        -webkit-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        transition: 1s clip-path;
+    }
+    
+    .diamond:hover {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="picture">
+        <img src="../images/ali.jpeg" alt="">
+    </div>
+
+    <h3>鼠标放上去</h3>
+    <img src="../images/ali.jpeg" class="diamond">
+</body>
+
+</html>
