@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>切角</title>
+    <style>
+	div{
+		width: 250px;
+        height: 150px;
+        margin: 10px;
+        background: #58a; /* 回退机制 */
+	}
+
+    /* 利用线性渐变 */
+    .bevel-corner-gradient {
+        background: linear-gradient(-45deg, transparent 15px, #58a 0);
+    }
+
+	/* 两个切角 */
+	.bevel-corner-gradient2{
+		background: linear-gradient(-45deg, transparent 15px, #58a 0) right,
+			linear-gradient(45deg,transparent 15px, #58a 0) left;
+		
+		background-size:50% 100%;
+		background-repeat: no-repeat;
+	}	
+	
+	/* 四个切角 线线渐变 + 背景图位置 */
+	.bevel-corner-gradient4{
+		background:
+		   linear-gradient(135deg, transparent 15px, #58a 0) top left,
+		   linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+		   linear-gradient(-45deg,transparent 15px, #58a 0) bottom right,
+		   linear-gradient(45deg,transparent 15px, #58a 0) bottom left;
+
+		   background-size: 50% 50%;
+		   background-repeat: no-repeat;
+	}
+    </style>
+</head>
+
+<body>
+    <div class="bevel-corner-gradient">
+    </div>
+
+    <div class="bevel-corner-gradient2"></div>
+	
+	<div class="bevel-corner-gradient4"></div>
+
+</body>
+
+</html>
