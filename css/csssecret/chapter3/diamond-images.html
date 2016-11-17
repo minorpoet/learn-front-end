@@ -11,10 +11,12 @@
         transform: rotate(45deg);
         overflow: hidden;
     }
+    
     /* 再旋转背景图并放大一定比例以填满菱形的对角线（勾股定理）*/
     .picture>img {
         max-width: 100%;
         transform: rotate(-45deg) scale(1.42);
+        /* 用scale而不是 修改width，因为width变化会导致外层元素尺寸变化*/
     }
     
     .diamond {
@@ -24,6 +26,7 @@
     }
     
     .diamond:hover {
+        border-radius: 50%;
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
@@ -31,11 +34,10 @@
 </head>
 
 <body>
-	<h2>菱形效果</h2>
+    <h2>菱形效果</h2>
     <div class="picture">
         <img src="../images/ali.jpeg" alt="">
     </div>
-
     <h3>鼠标放上去</h3>
     <img src="../images/ali.jpeg" class="diamond">
 </body>

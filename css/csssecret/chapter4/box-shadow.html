@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-shadow</title>
+	<style>
+		div{
+			width:200px;
+			height: 120px;
+			background:#fb3;
+		}
+		.shadow-one-side{
+			box-shadow: 0 5px 4px -4px black;
+		}
+
+		.shadow-2-sides{
+			box-shadow: 3px 3px 6px -3px black;
+		}
+
+		.shadow-opposite-sides{
+			box-shadow: 5px 0 5px -5px black,
+				-5px 0 5px -5px black;
+		}
+	</style>
+</head>
+<body>
+	<ol>
+		<li>
+			<h4>单边阴影</h4>
+			<div class="shadow-one-side"></div>
+		</li> 
+		<li>
+			<h4>邻边投影</h4>
+			<div class="shadow-2-sides"></div>
+		</li>
+		<li>
+			<h4>双侧投影</h4>
+			<div class="shadow-opposite-sides"></div>
+		</li>
+	</ol>
+</body>
+</html>
