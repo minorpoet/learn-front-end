@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>问题凸起效果</title>
+	<style>
+		body{
+			background:#58a;
+			padding: 1em;
+			font: bold 500%/1 Rockwell, serif;
+		}
+
+		/* 不设置模糊，以1px的跨度逐渐错开，使颜色逐渐加深，然后在底部加一层强烈模糊的暗投影 */
+		h1{
+			color:white;
+			text-shadow: 0 1px hsl(0, 0%, 85%)
+						,0 2px hsl(0, 0%, 80%)
+						,0 3px hsl(0, 0%, 75%)
+						,0 4px hsl(0, 0%, 70%)
+						,0 5px hsl(0, 0%, 65%)
+						,0 5px 10px black;
+		}
+	</style>
+</head>
+<body>
+	<h1>CSS3d</h1>
+</body>
+</html>

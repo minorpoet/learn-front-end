@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>扩大可点击区域</title>
+    <style>
+    button{
+    	padding: .3em .5em;
+        border-radius: 50%;
+        background: #58a;    
+        cursor: pointer;
+        font: bold 150%/1 sans-serif;
+        color: white;
+    }
+
+    button.hit-area-border {
+        border: 10px solid transparent;
+        background-clip: padding-box; /* 防止背景色延伸到边框上 默认是border-box*/
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset;
+    }
+
+    button.hit-area-pesude{
+		position:relative;
+		border:1px solid rgba(0,0,0,.3);
+    }
+    button.hit-area-pesude::before{
+		content:'';
+		position: absolute;
+		top:-10px; right:-10px;
+		bottom:-10px; left:-10px;
+    }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li>
+            <h4>通过添加透明边框，扩大鼠标点击区域, 再以内嵌阴影模拟边框；此方法糊影响布局</h4>
+            <button class="hit-area-border">
+                +
+            </button>
+        </li>  
+        <li>
+        	<h4>通过伪元素扩大点击区域，不会影响布局</h4>
+        	<button class="hit-area-pesude">+</button>
+        </li>
+    </ol>
+</body>
+
+</html>
