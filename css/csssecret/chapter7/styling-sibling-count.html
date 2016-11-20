@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>根据兄弟元素的数量来设定样式</title>
+    <style> 
+    
+    li {
+        background: #58a;
+    }
+    
+    li:first-child:nth-last-child(4),
+    li:first-child:nth-last-child(4) ~ li {
+        background-color: tan;
+    }
+    </style>
+</head>
+
+<body>
+	<h2>~ 兄弟选择符只能选择其后面的兄弟元素， 通过同时满足first-child和 nth-last-child(n) 来判断元素的个数</h2>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+        <li>e</li>
+    </ul>
+</body>
+
+</html>

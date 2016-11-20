@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自适应内部元素</title>
+	<style>
+		figure{
+			max-width: 300px;
+			width: min-content;
+			margin: auto;
+			border: 1px solid black;
+		}
+		figure > img{
+			max-width: inherit;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem consequuntur, soluta blanditiis earum ipsum illum vitae quo quidem asperiores numquam repudiandae ullam cupiditate totam porro repellat perferendis veniam accusamus. Doloremque.
+	</p>
+	<figure>
+		<img src="../images/adamcatlace.jpg" alt="">
+		<figcaption>The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer</figcaption>
+	</figure>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>垂直居中</title>
+    <style>
+    body{
+    	margin:0;
+    	padding:0;
+    }
+    div {
+        background: #fb3;
+        height: 400px;
+    }
+    
+    main {
+        background: #333;
+        text-align: center; 
+        color: white;
+    }
+
+    /* 绝对定位方案 */ 
+    .vertical-center-abs {
+        position: relative;
+    }
+    
+    /* 50% 再margin反方向移动自身高度的一半；  也可以利用css3移动高度的一半 */
+    .vertical-center-abs main {
+        position: absolute; 
+        top: calc(50% - 3em); /* top - 元素高度的一半 */
+        left: calc(50% - 9em);
+        width: 18em;
+        height: 6em;
+    }
+
+	.vertical-center-flexbox{
+		background: tan;
+		display: flex;
+		min-height: 40vh;
+		margin:0;
+	}
+
+	.vertical-center-flexbox main{
+		margin:auto; /* flexbox布局后， margin:auto 会使水平和垂直方向都居中*/
+	}
+    </style>
+
+</head>
+
+<body>
+    <div class="vertical-center-abs">
+        <main>
+            <h1>Am I centered yet?</h1>
+            <p>Center me, please!</p>
+        </main>
+    </div>
+
+    <div class="vertical-center-flexbox">
+    	<main>
+            <h1>Am I centered yet?</h1>
+            <p>Center me, please!</p>
+        </main>
+    </div>
+</body>
+
+</html>
