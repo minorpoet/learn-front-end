@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>border-image</title>
+    <style>
+    div {
+        width: 150px;
+        height: 100px;
+        border: 27px solid;
+        margin: 20px 0;
+        text-align: center;
+        line-height: 100px;
+    }
+    
+    .border-image1 {
+        border-image: url(border.png) 27 round stretch;
+    }
+    
+    .border-image2 {
+        border-image: url(border.png) 27 stretch round;
+    }
+    </style>
+</head>
+
+<body>
+	<p>
+		 根据不同的边框背景图，切个成九宫格，从而设计出各种各样的特殊边框样式，如带有纹理的相框、带有花边的边框、书本样式等
+	</p>
+	 背景图：<img src="border.png" alt="">  
+    <div class="border-image1">
+        左右拉伸 上下平铺
+    </div>
+    <div class="border-image2">
+        左右平铺 上下拉伸
+    </div>
+</body>
+
+</html>
