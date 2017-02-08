@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>border radius practice</title>
+    <style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        border-radius: 50%;
+        margin: 20px;
+    }
+    .circle{
+		background-color: pink;
+    }
+
+    .semicircle-top {
+        height: 50px;
+        border-radius: 50px 50px 0 0;
+    }
+    
+    .semicircle-right {
+        width: 50px;
+        border-radius: 0 100% 100% 0/0 50% 50% 0;
+    }
+    
+    .semicircle-bottom {
+        height: 50px;
+        border-radius: 50px 50px 0 0;
+    }
+    
+    .semicircle-left {
+        width: 50px;
+        border-radius: 0 50px 50px 0;
+    }
+    
+    .quarterCircle-top {
+        border-radius: 100% 0 0 0;
+    }
+    
+    .quarterCircle-right {
+        border-radius: 0 100% 0 0;
+    }
+    
+    .quarterCircle-bottom {
+        border-radius: 0 0 100px 0;
+    }
+    
+    .quarterCircle-left {
+        border-radius: 0 0 0 100%;
+    }
+
+    .oval-hov{
+    	height:50px;
+    }
+    .oval-ver{
+		width:50px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="circle"></div>
+    <h3>1. 制作半圆, 宽度或高度要刚好为半圆的半径</h3>
+    <div class="semicircle-top"></div>
+    <div class="semicircle-right"></div>
+    <div class="semicircle-bottom"></div>
+    <div class="semicircle-left"></div>
+    <h3>2. 扇形</h3>
+    <div class="quarterCircle-top"></div>
+    <div class="quarterCircle-right"></div>
+    <div class="quarterCircle-bottom"></div>
+    <div class="quarterCircle-left"></div>
+    <h3>3. 椭圆</h3>
+    <div class="oval-hov"></div>
+    <div class="oval-ver"></div>
+</body>
+
+</html>
