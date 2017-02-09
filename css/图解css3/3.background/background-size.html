@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>background-size</title>
+	<style>
+		div{
+			width:320px;
+			height: 270px;
+			border:1px solid red;
+			background:url(bg.jpg) no-repeat;
+			margin:20px;
+			font:20px/1.2 '微软雅黑';
+		}
+		.auto{
+			background-size: auto;
+		}
+		.cover{
+			background-size:cover;
+		}
+		.contain{
+			background-size: contain;
+		}
+		.length{
+			background-size: 280px;
+		}
+		.percentage{
+			background-size: 50% 80%;
+		}
+		.center{
+			background-position:center;
+		}
+	</style>
+</head>
+<body>
+	<div class="auto">auto</div>
+	<div class="cover">cover</div>
+	<div class="contain">contain</div>
+	<div class="contain center">contain + position</div>
+	<div class="length">length</div>
+	<div class="percentage">percentage based on container's width and height</div>
+</body>
+</html>

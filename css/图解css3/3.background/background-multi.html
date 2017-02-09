@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>多背景</title>
+    <style>
+    .demo {
+        width: 240px;
+        border: 20px solid rgba(104, 104, 142, 0.5);
+        border-radius: 10px;
+        padding: 80px 60px;
+        font-size: 25px;
+        line-height: 1.5;
+        text-align: center;
+    }
+    
+    .multipleBg {
+        background: url('bg-tl.png') no-repeat left top, 
+        url('bg-tr.png') no-repeat right top, 
+        url('bg-bl.png') no-repeat left bottom, 
+        url('bg-br.png') no-repeat right bottom, 
+        url('bg-repeat.png') repeat left top;
+
+        background-origin: border-box, border-box, border-box, border-box, padding-box;
+        
+        /* 控制背景显示区域，所有超过边框外边缘的都将被剪切掉 */
+        background-clip: border-box;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="demo multipleBg"></div>
+</body>
+
+</html>
