@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>text-overflow</title>
+    <style>
+    .text-overflow {
+        width: 100px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin:10px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    
+    .clip {
+        text-overflow: clip;
+    }
+    
+    .ellipsis {
+        text-overflow: ellipsis;
+    }
+
+    /* 固定区域的博客列表 */
+    .block{
+   		margin: 0 auto;
+   		margin-top: 20px;
+   		width:318px;
+   		line-height: 20px;
+   		border:1px solid #fc9;
+    }
+    .block ol{
+    	padding-left: 23px;
+    	width: 14em;
+    	background:url(bg.png) no-repeat 2px 4px;
+     }
+    .block li{
+    	clear:both;
+    	margin:0;
+    	padding:0;
+    	list-style:none;
+    }
+    .block li a{
+    	float:left;
+    	max-width: 14em;
+    	white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow:ellipsis;
+    	-o-text-overflow:ellipsis;
+    	color:#333;
+    	font-size:12px;
+    }
+    .block li span{
+    	float:left;
+    	margin-right:-99px;
+    	padding-left:10px;
+    	font-size:10px;
+    	color:#999;
+    }
+    .clearfix::after{
+    	content:'';
+    	clear:both;
+   		display: block;
+   		height: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="text-overflow clip">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni a deserunt aliquid sed voluptates alias, placeat delectus sint rem asperiores nam atque incidunt eos amet at sit voluptatum aut provident.</div>
+    <div class="text-overflow ellipsis">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis saepe laboriosam atque, quod nam quibusdam sed minus odio quis aliquam libero hic sequi cum modi, facere officia praesentium eaque corporis!</div>
+
+  <div class="block">
+	<h3>最新博文</h3>
+	<ol class="clearfix">
+		<li><a href="#">如何和何时使用CSS的!important</a><span>2013-02-19</span></li>
+		<li><a href="#">社交媒体网站设计尺寸参考</a><span>2013-02-19</span></li>
+		<li><a href="#">10个简单有效的方法帮你改善jQuery代码与性能</a><span>2013-01-28</span></li>
+		<li><a href="#">预处理器的对比——Sass、LESS和Stylus</a><span>2013-01-26</span></li>
+		<li><a href="#">43个处理触摸事件的jQuery插件</a><span>2013-01-09</span></li>
+		<li><a href="#">2012年国外优秀前端网站</a><span>2013-01-02</span></li>
+		<li><a href="#">CSS团队精神：CSS最佳实践团队开发</a><span>2012-12-31</span></li>
+		<li><a href="#">使用CSS3的background-size优化苹果的Retina屏幕的图像显示</a><span>2012-12-26</span></li>
+		<li><a href="#">你应该知道的一些事情——CSS权重</a><span>2012-12-21</span></li>
+		<li><a href="#">使用CSS Scriptes来优化你的网站在Retina屏幕下显示</a><span>2012-12-18</span></li>
+	</ol>
+</div>
+</body>
+
+</html>
