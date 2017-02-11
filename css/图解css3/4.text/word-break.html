@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>word-break</title>
+	<style>
+		div{
+			float:left;
+			width:150px;
+			margin:10px;
+			font-size: 16px;
+			font-family: simsun;
+			border:1px solid #ccc;
+ 		}
+
+		.clearfix{
+			float:none;
+ 			clear:both; 
+  			border:none;
+ 			margin:0;
+		}
+		 
+		.break-all{
+			word-break:break-all;
+		}
+		.keep-all{
+			word-break:keep-all;
+		}
+
+		h3{
+			margin:30px 0 10px 0;
+   		}
+	</style>
+</head>
+<body>
+	<h3>word-break:normal</h3>
+  	<div>我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，</div>
+	<div><h4>中文加英文</h4>床前明月光，疑是地上霜css3,html5,css,cssdd3, html5,css,css3,html5,css，低头写javascript</div>
+	<div>Use the url:http://www.w3c.com/sssssfaaaaalfjkajdfkjafdjaflkjalfjak.html, sssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+ 	<div class="clearfix"></div>
+
+	<h3>word-break:break-all</h3>
+ 	<div class="break-all">我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，</div>
+	<div class="break-all"><h4>中文加英文</h4>床前明月光，疑是地上霜css3,html5,css,cssdd3, html5,css,css3,html5,css，低头写javascript</div>
+	<div class="break-all">Use the url:http://www.w3c.com/sssssfaaaaalfjkajdfkjafdjaflkjalfjak.html, sssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+	<div class="clearfix"></div>
+
+ 	<h3>word-break:keep-all</h3>
+	<div class="keep-all">我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，</div>
+	<div class="keep-all"><h4>中文加英文</h4>床前明月光，疑是地上霜css3,html5,css,cssdd3, html5,css,css3,html5,css，低头写javascript</div>
+	<div class="keep-all">Use the url:http://www.w3c.com/sssssfaaaaalfjkajdfkjafdjaflkjalfjak.html, sssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+	 
+</body>
+</html>
