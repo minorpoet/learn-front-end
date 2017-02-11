@@ -1,44 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>word-wrap</title>
-	<style>
-		div{
-			float:left;
-			width:150px;
-			margin:10px;
-			font-size: 16px;
-			font-family: simsun;
-			border:1px solid #ccc;
- 		}
-		
-		.clearfix{
-			height: 0;
- 			border:none;
-			clear:both;
-		}
-
-		.break-word{
-			word-wrap:break-word;
-		}
-
-		h3{
-			clear:both;
- 		}
-	</style>
+    <meta charset="UTF-8">
+    <title>word-wrap</title>
+    <style>
+    div {
+        float: left;
+        width: 150px;
+        margin: 10px;
+        font-size: 16px;
+        font-family: simsun;
+        border: 1px solid #ccc;
+    }
+    
+    .clearfix {
+    	float:none;
+        height: 0;
+        border: none;
+        clear: both;
+    }
+    
+    .break-word {
+        word-wrap: break-word;
+    }
+    
+    h3{
+    	margin: 30px 0 10px 0;
+    }
+    h4 {
+        color: red;
+    }
+    </style>
 </head>
+
 <body>
-	<h3>word-wrap: normal;默认</h3>
- 	<div>我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，</div>
-	<div><h4>中文加英文</h4>床前明月光，疑是地上霜css3,html5,css,cssdd3,html5,css,css3,html5,css，低头写javascript</div>
-	<div>Use the url:http://www.w3c.com/sssssfaaaaalfjkajdfkjafdjaflkjalfjak.html, sssssssssssssssssssssssssssssssssssssssssssssssssss</div>
-	<div class="clearfix"></div>
+    <h3>word-wrap: normal;默认</h3>
+    <div>我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，</div>
+    <div>
+        <h4>中文加英文</h4>床前明月光，疑是地上霜css3,html5,css,cssdd3,html5,css,css3,html5,css，低头写javascript</div>
+    <div>Use the url:http://www.w3c.com/sssssfaaaaalfjkajdfkjafdjaflkjalfjak.html, sssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+    <div class="clearfix"></div>
+    <h3>word-wrap: break-word;允许将长单词和url进行换行</h3>
+    <h4>注意和 word-break:break-all的区别</h4>
+    <div class="break-word">我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，</div>
+    <div class="break-word">
+        <h4>中文加英文</h4>床前明月光，疑是地上霜css3,html5,css,cssdd3,html5,css,css3,html5,css，低头写javascript</div>
+    <div class="break-word">Use the url:http://www.w3c.com/sssssfaaaaalfjkajdfkjafdjaflkjalfjak.html, sssssssssssssssssssssssssssssssssssssssssssssssssss</div>
 	
-	<h3>word-wrap: break-word;允许将长单词和url进行换行</h3>
-	<div class="break-word">我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，我是测试文本，全部中文，</div>
-	<div class="break-word"><h4>中文加英文</h4>床前明月光，疑是地上霜css3,html5,css,cssdd3,html5,css,css3,html5,css，低头写javascript</div>
-	<div class="break-word">Use the url:http://www.w3c.com/sssssfaaaaalfjkajdfkjafdjaflkjalfjak.html, sssssssssssssssssssssssssssssssssssssssssssssssssss</div>
-	 
+	<br>
+	<div class="clearfix"></div>
+    <a href="http://www.cnblogs.com/2050/archive/2012/08/10/2632256.html">你真的了解word-wrap和word-break的区别吗？</a>
 </body>
+
 </html>
