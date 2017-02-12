@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>resize</title>
+    <style>
+    textarea {
+        display: block;
+        margin: 20px;
+    }
+    
+    textarea:nth-child(2) {
+        resize: none;
+    }
+    
+    textarea:nth-child(3) {
+        resize: both;
+    }
+    
+    textarea:nth-child(4) {
+        resize: horizontal;
+    }
+    
+    textarea:nth-child(5) {
+        resize: vertical;
+    }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <textarea name="test" id="" cols="30" rows="10" placeholder="textarea 默认resize"></textarea>
+        <textarea name="test" id="" cols="30" rows="10" placeholder="禁止textarea的默认resize"></textarea>
+        <textarea name="test" id="" cols="30" rows="10" placeholder="修改文本域随意调整大小的功能 both"></textarea>
+        <textarea name="test" id="" cols="30" rows="10" placeholder="修改文本域随意调整大小的功能 horizontal only"></textarea>
+        <textarea name="test" id="" cols="30" rows="10" placeholder="修改文本域随意调整大小的功能 vertical only"></textarea>
+    </form>
+</body>
+
+</html>
