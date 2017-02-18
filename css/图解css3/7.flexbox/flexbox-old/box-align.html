@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-align</title>
+	<link rel="stylesheet" href="../../demo.css">
+	<style>
+	body > div {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+  
+    .box {
+        display: -moz-box;
+        display: -webkit-box;
+        display: box;
+        width: 500px;
+        height: 200px; 
+        font-size:20px;
+        font-weight: bold;
+        color:#fff;
+        float:left;
+
+        -webkit-box-align: start;
+        -moz-box-align: start;
+        box-align: start;
+    }
+    
+    .box > div{
+    	padding:10px;
+    }
+
+    .box div:nth-child(1){
+    	background: #305ed6;
+    	line-height: 50px;
+    }
+    .box div:nth-child(2){
+    	background-color: #e727b3;
+    	line-height: 80px;
+    }
+    .box div:nth-child(3){
+    	background-color: #3f8514;
+    	line-height: 100px;
+    }
+    .box div:nth-child(4){
+		background-color: #e6b710;
+    }
+    .box div:nth-child(5){
+    	background-color: #f96;
+    }
+	
+	.box-orient-vertical{
+		-moz-box-orient: vertical;
+		-webkit-box-orient:vertical;
+		box-orient: vertical;
+		width: 200px;
+		height: 400px;
+	}
+	
+	.box-align-start{
+		-moz-box-align: start;
+		-webkit-box-align: start;
+		box-align:start;
+	}
+ 	
+ 	.box-align-center{
+		-moz-box-align: center;
+		-webkit-box-align: center;
+		box-align:center;
+	}
+	.box-align-baseline{
+		-moz-box-align: baseline;
+		-webkit-box-align: baseline;
+		box-align:baseline;
+	}
+
+	.box-align-stretch{
+		-moz-box-align: stretch;
+		-webkit-box-align: stretch;
+		box-align:stretch;
+	}
+	</style>
+</head>
+<body>
+	<p>
+		box-align: start | end | center | baseline | stretch <br>
+		管理伸缩容器在侧轴方向的额外空间，也就是用来定义伸缩项目的在侧轴上的对齐方式； 默认stretch
+	</p>
+<h3>1. box-align: start</h3>
+	<div class="box box-align-start">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+
+	</div>
+	<div class="box box-orient-vertical box-align-start">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	
+	<h3>2. box-align: center</h3>
+	<div class="box box-align-center">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	<div class="box box-orient-vertical bbox-align-center">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	
+	<h3>3. box-align: baseline</h3>
+	<div class="box box-align-baseline">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	<div class="box box-orient-vertical box-align-baseline">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+ 
+ 	<h3>3. box-align: stretch</h3>
+	<div class="box box-align-stretch">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	<div class="box box-orient-vertical box-align-stretch">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+</body>
+</html>

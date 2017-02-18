@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伸缩性box-flex</title>
+	<link rel="stylesheet" href="../../demo.css">
+	<style>
+		body{
+ 			font-size: 20px;
+		}
+
+		.box{
+			color:#fff;
+			width:960px;
+			background: gray;
+			margin: 10px;
+			display: -webkit-box;
+			display: -moz-box;
+			display: box;
+		}
+		.box p:first-child{
+			background-color: green;
+		}
+		.box p:last-child{
+			background-color: orange;
+		}
+	
+		.box-flex-1-1 p{
+			-moz-box-flex:1;
+			-webkit-box-flex:1;
+			box-flex:1;
+		}
+		.box-flex-1-0 p:first-child{
+			 -moz-box-flex:1;
+			 -webkit-box-flex:1;
+			 box-flex:1;
+		}
+
+		.box-flex-1-2 p:first-child{
+			-moz-box-flex:1;
+			-webkit-box-flex:1;
+			box-flex:1;
+		}
+		.box-flex-1-2 p:last-child{
+			-moz-box-flex:2;
+			-webkit-box-flex:2;
+			box-flex:2;
+		}
+		
+		.narrow-box{
+			width: 410px;
+		}
+	</style>
+</head>
+<body>
+<p>
+	box-flex: number 灵活控制伸缩项目在伸缩容器中的显示空间； <br>
+	1. 根据在伸缩项目上设置的box-flex数值总和，将容器内的额外空间分成n等分，然后伸缩项目扩展相应份 <br>
+	2. 当容器宽度小于伸缩项目的宽度之和时，则反向将溢出的空间分成n等分，然后伸缩项目收缩相应份
+</p>
+<h3>1. 扩展box-flex:1; box-flex:1;</h3>
+<div class="box box-flex-1-1">
+    <p>我是一个绿色的伸缩项目。</p>
+    <p>我是一个橙色的伸缩项目，我是用来测试box-flex的使用的。</p>
+</div>
+<h3>2. 扩展box-flex:1; </h3>
+<div class="box box-flex-1-0">
+    <p>我是一个绿色的伸缩项目。</p>
+    <p>我是一个橙色的伸缩项目，我是用来测试box-flex的使用的。</p>
+</div>
+
+<h3>3. 扩展 box-flex:1; box-flex:2;</h3>
+<div class="box box-flex-1-2">
+    <p>我是一个绿色的伸缩项目。</p>
+    <p>我是一个橙色的伸缩项目，我是用来测试box-flex的使用的。</p>
+</div>
+
+<h3>4. 收缩 box-flex:1; box-flex:1;</h3>
+<div class="box narrow-box box-flex-1-1">
+    <p>我是一个绿色的伸缩项目。</p>
+    <p>我是一个橙色的伸缩项目，我是用来测试box-flex的使用的。</p>
+</div>
+</body>
+</html>

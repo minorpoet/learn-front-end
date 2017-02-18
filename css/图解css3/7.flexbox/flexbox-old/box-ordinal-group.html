@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>box-ordinal-group</title>
+    <link rel="stylesheet" href="../../demo.css">
+    <style>
+    body {
+        font-size: 20px;
+    }
+    
+    .box {
+        display: -moz-box;
+        display: -webkit-box;
+        display: box;
+        color: #fff;
+        border: 1px solid red;
+        background-color: gray;
+        margin: 10px;
+    }
+    
+    .box div {
+        background: #f36;
+        padding: 20px;
+        margin: 5px;
+    }
+
+    .box div:nth-child(1),
+    .box div:nth-child(4){
+    	background: orange;
+    	-moz-box-ordinal-group:2;
+    	-webkit-box-ordinal-group:2;
+    	box-ordinal-group:2;
+    }
+
+    .box div:nth-child(3){
+    	background: green;
+    	-moz-box-ordinal-group:3;
+    	-webkit-box-ordinal-group:3;
+    	box-ordinal-group:3;
+    }
+    </style>
+</head>
+
+<body>
+    <p>
+        box-ordinal-group: integer 默认值为1， 设置伸缩项目在容器中的位置顺序序号，数值越大排越后边
+    </p>
+    <div class="box">
+        <div>Box1</div>
+        <div>Box2</div>
+        <div>Box3</div>
+        <div>Box4</div>
+        <div>Box5</div>
+    </div>
+</body>
+
+</html>

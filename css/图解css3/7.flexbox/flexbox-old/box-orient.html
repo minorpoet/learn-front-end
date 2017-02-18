@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>box-orient</title>
+    <link rel="stylesheet" href="../../demo.css">
+    <style>
+    body > div {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+    
+    .box {
+        display: -moz-box;
+        display: -webkit-box;
+        display: box;
+    }
+    
+    div > div {
+        border: 1px solid #f46;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+    }
+    
+    .box-horizontal {
+        -moz-box-orient: horizontal;
+        -webkit-box-orient: horizontal;
+        box-orient: horizontal;
+    }
+    
+    .box-vertical {
+        -moz-box-orient: vertical;
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
+    }
+    
+    .box-inline-axis {
+        -moz-box-orient: inline-axis;
+        -webkit-box-orient: inline-axis;
+        box-orient: inline-axis;
+    }
+    
+    .box-block-axis {
+        -moz-box-orient: block-axis;
+        -webkit-box-orient: block-axis;
+        box-orient: block-axis;
+    }
+    </style>
+</head>
+
+<body>
+	<p>
+		box-orient: horizontal | vertical | inline-axis | block-axis <br>
+		确定伸缩项的布局方向
+	</p>
+    <div class="box box-horizontal">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+    <div class="box box-vertical">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+    <div class="box box-inline-axis">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+    <div class="box box-block-axis">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+</body>
+
+</html>

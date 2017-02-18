@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-pack</title>
+	<link rel="stylesheet" href="../../demo.css">
+	<style>
+	body > div {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+    h3{
+    	margin:15px 0 10px 10px;
+    	font-size: 1.2em;
+    	font-weight: bold;
+    	clear:both;
+    }
+    .box {
+        display: -moz-box;
+        display: -webkit-box;
+        display: box;
+        width: 500px;
+        height: 200px; 
+        font-size:20px;
+        font-weight: bold;
+        color:#fff;
+        float:left;
+
+        -webkit-box-align: start;
+        -moz-box-align: start;
+        box-align: start;
+    }
+    
+    .box > div{
+    	padding:10px;
+    }
+
+    .box div:nth-child(1){
+    	background: #305ed6;
+    	line-height: 50px;
+    }
+    .box div:nth-child(2){
+    	background-color: #e727b3;
+    	line-height: 80px;
+    }
+    .box div:nth-child(3){
+    	background-color: #3f8514;
+    	line-height: 100px;
+    }
+    .box div:nth-child(4){
+		background-color: #e6b710;
+    }
+    .box div:nth-child(5){
+    	background-color: #f96;
+    }
+	
+	.box-orient-vertical{
+		-moz-box-orient: vertical;
+		-webkit-box-orient:vertical;
+		box-orient: vertical;
+		width: 200px;
+		height: 400px;
+	}
+	
+	.box-pack-start{
+        -webkit-box-pack:start;
+        -moz-box-pack:start;
+        box-pack:start;
+	}
+	.box-pack-end{
+		-webkit-box-pack:end;
+		-moz-box-pack:end;
+		box-pack:end;
+	}
+	.box-pack-center{
+		-webkit-box-pack:center;
+		-moz-box-pack:center;
+		box-pack:center;
+	}
+	.box-pack-justify{
+		-webkit-box-pack:justify;
+		-moz-box-pack:justify;
+		box-pack:justify;
+	}
+	</style>
+</head>
+<body>
+	<p>
+		box-pack: start | end | center | justify <br>
+		在主轴方向（box-orient）上对伸缩容器的额外空间进行管理; 当取值为start|end的时候 还受box-direction的影响
+	</p>
+
+	<h3>1. box-pack: start</h3>
+	<div class="box box-pack-start">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+
+	</div>
+	<div class="box box-orient-vertical box-pack-start">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	
+	<h3>2. box-pack: end</h3>
+	<div class="box box-pack-end">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	<div class="box box-orient-vertical box-pack-end">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	
+	<h3>3. box-pack: center</h3>
+	<div class="box box-pack-center">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	<div class="box box-orient-vertical box-pack-center">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+
+	<h3>4. box-pack: justify</h3>
+	<div class="box box-pack-justify">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	<div class="box box-orient-vertical box-pack-justify">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div> 
+</body>
+</html>

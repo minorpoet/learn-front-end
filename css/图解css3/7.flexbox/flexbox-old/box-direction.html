@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-direction</title>
+	<link rel="stylesheet" href="../../demo.css">
+	<style>
+		body > div{
+			border:1px solid #ccc;
+			margin:10px;
+			padding:10px;
+		}
+		div > div{
+			border: 1px solid red;
+			text-align: center;
+			width: 20px;
+			height: 20px;
+		}
+		.box{
+			display: -moz-box;
+			display: -webkit-box;
+			display: box;
+		}
+		.box-horizontal{
+			-moz-box-orient:horizontal;
+			-webkit-box-orient:horizontal;
+			box-orient: horizontal;
+		}
+		.box-vertical{
+			-moz-box-orient:vertical;
+			-webkit-box-orient:vertical;
+			box-orient: vertical;
+		}
+		.box-direction-reverse{
+			-moz-box-direction: reverse;
+			-webkit-box-direction: reverse;
+			box-direction: reverse;
+
+			/*direction: rtl;*/ /* 试试效果 */
+		}
+	</style>
+</head>
+<body>
+	<p>
+		box-direction: normal | reverse; <br>
+		设置伸缩容器中伸缩项的流动顺序， 受文字书写模式ltr还是rtl和box-orient共同影响
+	</p>
+	 <div class="box box-horizontal ">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+     <div class="box box-horizontal box-direction-reverse">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+    <div class="box box-vertical">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+    <div class="box box-vertical box-direction-reverse">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+
+</body>
+</html>
