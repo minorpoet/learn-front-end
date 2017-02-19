@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex-direction</title>
+	<link rel="stylesheet" href="../../demo.css">
+	<style>
+		.flexbox-container{
+			display: -ms-flexbox;
+			padding: 10px;
+			border:1px solid hsla(120,30%,50%,0.8);
+			margin:10px;
+			background-color: hsla(10,80%,10%,0.2);
+		}
+		
+		.row{
+			-ms-flex-direction:row;
+		}
+		.row-reverse{
+			-ms-flex-direction: row-reverse;
+		}
+		.column{
+			-ms-flex-direction:column;
+		}
+		.column-reverse{
+			-ms-flex-direction:column-reverse;
+		}
+
+		.flexbox-container > div{
+			width:100px;
+			height:100px;
+			border:1px solid hsla(120,30%,50%,0.8);
+			margin:5px;
+			font-size:20px;
+			text-align:center;
+			line-height: 100px;
+			color:#fff;
+			font-weight:bold;
+		}
+
+		.flexbox-container > div:nth-child(1){
+			background-color: hsla(120,30%,50%,0.8);
+		}
+		.flexbox-container > div:nth-child(2){
+			background-color: hsla(120,30%,10%,0.8);
+		}
+		.flexbox-container > div:nth-child(3){
+			background-color: hsla(20,30%,50%,0.8);
+		}
+		.flexbox-container > div:nth-child(4){
+			background-color: hsla(20,80%,50%,0.8);
+		}
+		.flexbox-container > div:nth-child(5){
+			background-color: hsla(320,80%,50%,0.8);
+		}
+		.flexbox-container > div:nth-child(6){
+			background-color: hsla(320,80%,80%,0.8);
+		}
+
+	</style>
+</head>
+<body>
+	<p class="attention">
+		需要在ie10中查看效果
+	</p>
+	<p>
+		-ms-flex-direction: row | row-reverse | column | column-reverse <br>	
+		决定伸缩流的方向,也决定伸缩项目的流动顺序; 相当于旧版 box-orient 
+	</p>
+	<div class="flexbox-container row">
+		<div>Box1</div>
+		<div>Box2</div>
+		<div>Box3</div>
+		<div>Box4</div>
+	</div>
+	<div class="flexbox-container row-reverse">
+		<div>Box1</div>
+		<div>Box2</div>
+		<div>Box3</div>
+		<div>Box4</div>
+	</div>
+	<div class="flexbox-container column">
+		<div>Box1</div>
+		<div>Box2</div>
+		<div>Box3</div>
+		<div>Box4</div>
+	</div><div class="flexbox-container column-reverse">
+		<div>Box1</div>
+		<div>Box2</div>
+		<div>Box3</div>
+		<div>Box4</div>
+	</div>
+
+</body>
+</html>

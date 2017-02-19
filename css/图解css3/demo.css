@@ -14,3 +14,15 @@ h3 {
     font-weight: bold;
     clear: both;
 }
+
+.attention{
+	margin:0;
+	width:100%;
+	color:#826200;
+	font-weight: bold;
+ 	line-height: 1.2;
+ 	padding: 15px 25px;
+ 	text-align:center;
+	background:#fbe5a8;
+	text-shadow: 0 1px 1px #fff;
+}

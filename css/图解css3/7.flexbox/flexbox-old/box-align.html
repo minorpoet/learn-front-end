@@ -63,7 +63,11 @@
 		-webkit-box-align: start;
 		box-align:start;
 	}
- 	
+ 	.box-align-end{
+		-moz-box-align: end;
+		-webkit-box-align: end;
+		box-align:end;
+	}
  	.box-align-center{
 		-moz-box-align: center;
 		-webkit-box-align: center;
@@ -87,14 +91,13 @@
 		box-align: start | end | center | baseline | stretch <br>
 		管理伸缩容器在侧轴方向的额外空间，也就是用来定义伸缩项目的在侧轴上的对齐方式； 默认stretch
 	</p>
-<h3>1. box-align: start</h3>
+	<h3>1. box-align: start</h3>
 	<div class="box box-align-start">
 		<div class="box-item">box1</div>
 		<div class="box-item">box2</div>
 		<div class="box-item">box3</div>
 		<div class="box-item">box4</div>
 		<div class="box-item">start</div>
-
 	</div>
 	<div class="box box-orient-vertical box-align-start">
 		<div class="box-item">box1</div>
@@ -103,8 +106,24 @@
 		<div class="box-item">box4</div>
 		<div class="box-item">start</div>
 	</div>
+
+	<h3>2. box-align: end</h3>
+	<div class="box box-align-end">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
+	<div class="box box-orient-vertical box-align-end">
+		<div class="box-item">box1</div>
+		<div class="box-item">box2</div>
+		<div class="box-item">box3</div>
+		<div class="box-item">box4</div>
+		<div class="box-item">start</div>
+	</div>
 	
-	<h3>2. box-align: center</h3>
+	<h3>3. box-align: center</h3>
 	<div class="box box-align-center">
 		<div class="box-item">box1</div>
 		<div class="box-item">box2</div>
@@ -120,7 +139,7 @@
 		<div class="box-item">start</div>
 	</div>
 	
-	<h3>3. box-align: baseline</h3>
+	<h3>4. box-align: baseline</h3>
 	<div class="box box-align-baseline">
 		<div class="box-item">box1</div>
 		<div class="box-item">box2</div>
@@ -136,7 +155,7 @@
 		<div class="box-item">start</div>
 	</div>
  
- 	<h3>3. box-align: stretch</h3>
+ 	<h3>5. box-align: stretch</h3>
 	<div class="box box-align-stretch">
 		<div class="box-item">box1</div>
 		<div class="box-item">box2</div>
